@@ -31,6 +31,10 @@ body {
     font-weight: 100;
     text-align: left;
 }
+#temp-type {
+    font-size: 40px;
+    line-height: 0;
+}
 #city-name {
     color: #FFF;
     font-size: 40px;
