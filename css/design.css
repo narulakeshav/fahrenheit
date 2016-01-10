@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300);
+body {
+    background: linear-gradient(#BCD1E0, #84AECF);
+    height: 100vh;
+    padding-top: 8%;
+    font-family: Raleway;
+}
+.card {
+    padding: 0;
+    background: #FFF;
+    box-shadow: 2px 5px 8px rgba(0,0,0,0.2);
+}
+.card-view {
+    background: radial-gradient(circle, #55B1FA, #2196F3);
+    padding: 40px 20px 20px 20px;
+}
+.card-forecast {
+    padding: 20px 20px 130px;
+}
+#weather-icon {
+    font-size: 80px;
+    color: #FFF;
+    line-height: 20px;
+}
+#temperature-fa {
+    padding-top: 30px;
+    font-size: 80px;
+    color: #FFF;
+    line-height: 50px;
+    font-weight: 100;
+    text-align: left;
+}
+#city-name {
+    color: #FFF;
+    font-size: 40px;
+    text-align: left;
+    padding-top: 8px;
+}
+#weather-info {
+    color: rgba(0,0,0,0.3);
+    font-size: 25px;
+    line-height: 0;
+    font-weight: bolder;
+}
+#day-of-week {
+    font-size: 16px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+#forecast-icon {
+    font-size: 25px;
+    color: #999;
+}
+#forecast-weather {
+    color: #999;
+    font-size: 20px;
+}
+#today {
+    font-size: 16px;
+    color: #2196F3;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+#today-forecast-icon {
+    font-size: 25px;
+    color: #2196F3;
+}
+#today-forecast-weather {
+    color: #2196F3;
+    font-size: 20px;
+}
+.temp-buttons {
+    background: transparent;
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    float: right;
+    position: relative;
+    right: 29.1%;
+    top: -76%;
+}
+.temp-butt {
+    width: 60px;
+    height: 60px;
+    border-radius: 0px;
+    border: none;
+    background: #2497F3;
+    color: #FFF;
+    font-size: 20px;
+}
+#celcius {
+    background: #FFF;
+    color: #2196F3;
+}
