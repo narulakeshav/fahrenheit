@@ -32,46 +32,47 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="row card" align="center">
                 <div class="card-view">
-                    <p id="weather-icon"><i class="wi wi-day-cloudy"></i></p>
-                    <p id="weather-info">It's kind of cloudy</p>
-                    <p id="temperature-fa">54<span>&deg;</span><span id="temp-type">F</span></p>
-                    <p id="city-name">Stockton, CA</p>
+                    <div class="col-md-1 temp-buttons">
+                        <button class="temp-butt selected">F</button>
+                        <button class="temp-butt">C</button>
+                    </div>
+                    <div class="col-md-12">
+                        <p id="weather-icon"><i class="wi wi-day-cloudy"></i></p>
+                        <p id="weather-info">It's kinda cold</p>
+                        <p id="temperature-fa">76&deg;<span id="temp-type">F</span></p>
+                        <p id="city-name">San Jose</p>
+                    </div>
                 </div>
                 <div class="card-forecast">
                     <div class="col-md-3" id="forecast1">
-                        <p id="today">Sun</p>
-                        <p id="today-forecast-icon"><i class="wi wi-day-cloudy"></i></p>
-                        <p id="today-forecast-weather">60<span>&deg;</span><span id="f-or-c">F</span></p>
+                        <p id="today"></p>
+                        <p id="today-forecast-icon"><i class="wi "></i></p>
+                        <p id="today-forecast-weather"><span id="f-or-c"></span></p>
                     </div>
                     <div class="col-md-3" id="forecast2">
-                        <p id="day-of-week">Mon</p>
-                        <p id="forecast-icon"><i class="wi wi-day-cloudy"></i></p>
-                        <p id="forecast-weather">62<span>&deg;</span><span id="f-or-c">F</span></p>
+                        <p id="day-of-week"></p>
+                        <p id="forecast-icon"><i class="wi "></i></p>
+                        <p id="forecast-weather"><span id="f-or-c"></span></p>
                     </div>
                     <div class="col-md-3" id="forecast3">
-                        <p id="day-of-week">Tue</p>
-                        <p id="forecast-icon"><i class="wi wi-rain"></i></p>
-                        <p id="forecast-weather">54<span>&deg;</span><span id="f-or-c">F</span></p>
+                        <p id="day-of-week"></p>
+                        <p id="forecast-icon"><i class="wi "></i></p>
+                        <p id="forecast-weather"><span id="f-or-c"></span></p>
                     </div>
                     <div class="col-md-3" id="forecast4">
-                        <p id="day-of-week">Wed</p>
-                        <p id="forecast-icon"><i class="wi wi-rain"></i></p>
-                        <p id="forecast-weather">55<span>&deg;</span><span id="f-or-c">F</span></p>
+                        <p id="day-of-week"></p>
+                        <p id="forecast-icon"><i class="wi "></i></p>
+                        <p id="forecast-weather"><span id="f-or-c"></span></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-1 temp-buttons">
-        <button class="temp-butt" id="fahrenheit">F</button>
-        <button class="temp-butt" id="celcius">C</button>
     </div>
     
     <!-- JAVASCRIPT CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.0.2/jquery.simpleWeather.min.js"></script>
 
     <!-- MY JAVSCRIPT FILE -->
     <script src="js/weather.js"></script>

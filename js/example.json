@@ -1,0 +1,39 @@
+{
+    "coord":{
+        "lon":-121.28,
+        "lat":37.91
+    },
+    "weather":[{
+        "id":701,
+        "main":"Mist",
+        "description":"mist",
+        "icon":"50n"
+    }],
+    "base":"cmc stations",
+    "main":{
+        "temp":281.77,
+        "pressure":1027,
+        "humidity":100,
+        "temp_min":279.15,
+        "temp_max":284.15
+    },
+    "wind":{
+        "speed":2.1,
+        "deg":140
+    },
+    "clouds":{
+        "all":90
+    },
+    "dt":1452584926,
+    "sys":{
+        "type":1,
+        "id":495,
+        "message":0.004,
+        "country":"US",
+        "sunrise":1452612030,
+        "sunset":1452647202
+    },
+    "id":7262653,
+    "name":"Taft Mosswood",
+    "cod":200
+}

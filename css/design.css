@@ -3,25 +3,33 @@
 body {
     background: linear-gradient(#BCD1E0, #84AECF);
     height: 100vh;
+    background-repeat: repeat;
+    background-position: center;
     padding-top: 8%;
     font-family: Raleway;
 }
 .card {
     padding: 0;
+    height: 475px;
     background: #FFF;
     box-shadow: 2px 5px 8px rgba(0,0,0,0.2);
 }
 .card-view {
     background: radial-gradient(circle, #55B1FA, #2196F3);
+    background-repeat: repeat;
+    background-position: center;
     padding: 40px 20px 20px 20px;
+    height: 325px;
 }
 .card-forecast {
     padding: 20px 20px 130px;
+    height: 150px;
 }
 #weather-icon {
     font-size: 80px;
     color: #FFF;
     line-height: 20px;
+    text-align: left;
 }
 #temperature-fa {
     padding-top: 30px;
@@ -46,6 +54,7 @@ body {
     font-size: 25px;
     line-height: 0;
     font-weight: bolder;
+    text-align: left;
 }
 #day-of-week {
     font-size: 16px;
@@ -77,24 +86,30 @@ body {
 }
 .temp-buttons {
     background: transparent;
-    width: 60px;
     margin: 0;
+    width: 85px;
     padding: 0;
     float: right;
-    position: relative;
-    right: 29.1%;
-    top: -76%;
+    margin-top: -30px;
 }
 .temp-butt {
-    width: 60px;
-    height: 60px;
-    border-radius: 0px;
-    border: none;
-    background: #2497F3;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    background: transparent;
     color: #FFF;
-    font-size: 20px;
+    font-size: 16px;
+    margin-top: 5px;
+    padding-top: 4px;
+    font-weight: bolder;
+    transition: all .5s;
 }
-#celcius {
+.temp-butt:hover {
+    background: #FFF;
+    color: #2196F3;
+}
+.selected {
     background: #FFF;
     color: #2196F3;
 }
