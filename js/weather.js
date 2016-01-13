@@ -17,7 +17,7 @@ function dayEveningOrNight() {
     var time = new Date().getHours();
 
     // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
-    if(time <= 13) return -1;
+    if(time <= 12) return -1;
     else if (time <= 17) return 0;
     else return 1;
 }
@@ -200,15 +200,38 @@ function changeBackground() {
     if(time == -1) {
         // DAY TIME (5:00 AM)
         $(".card-view").css("background", "radial-gradient(circle, #FCD057, #FD8934)");
+        $("#convert-unit").hover(dayTimeHover, buttonOnNoHover);
     }
     else if(time == 0) {
         // EVENING TIME (5:00 PM)
         $(".card-view").css("background", "radial-gradient(circle, #55B1FA, #2196F3)");
+        $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
     }
     else {
         // NIGHT TIME (6:00 PM & BEYOND) (CHANGE THE ACTUAL COLORS)
         $(".card-view").css("background", "radial-gradient(circle, #34495E, #2C3E50)");
+        $("#convert-unit").hover(nightTimeHover, buttonOnNoHover);
     }
+}
+
+// FOR DAY TIME
+function dayTimeHover() {
+    $("#convert-unit").css("color", "#FD8934");
+}
+
+// FOR EVENING TIME
+function eveningTimeHover() {
+    $("#convert-unit").css("color", "#2196F3");
+}
+
+// FOR NIGHT TIME
+function nightTimeHover() {
+    $("#convert-unit").css("color", "#2C3E50");
+}
+
+// NO HOVER ON BUTTONS
+function buttonOnNoHover() {
+    $("#convert-unit").css("color", "#FFF");
 }
 
 // CALLING THE URL VARIABLE TO GET GEOLOCATION
