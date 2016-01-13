@@ -2,8 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300);
 body {
     /*background: linear-gradient(#BCD1E0, #84AECF);*/
-    /*background: linear-gradient(#CFB570, #E0A67B);*/
-    background: radial-gradient(#EEE, #BBB);
+    background: linear-gradient(#CFB570, #E0A67B);
     height: 100vh;
     background-repeat: repeat;
     background-position: center;
@@ -99,7 +98,6 @@ body {
 .temp-buttons {
     background: transparent;
     margin: 0;
-    width: 40px;
     padding: 0;
     float: right;
     margin-top: -30px;

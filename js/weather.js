@@ -4,6 +4,7 @@ var temperature = document.getElementById("temperature");
 var weatherDescription = document.getElementById("weather-info");
 var weatherIcon = document.getElementById("weather-icon");
 var tempInF = document.getElementById("convert-unit");
+var tempUnit = document.getElementById("temp-type");
 
 // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
 function convertKelvinToF(temp) {
@@ -51,6 +52,9 @@ var url = function() {
                 }
                 if(description.length < 6) {
                     weatherDescription.innerHTML = "It's kinda " + description + "y";
+                }
+                else {
+                    weatherDescription.innerHTML = description.substring(0,1).toUpperCase() + description.substring(1);
                 }
                 changeBackground();
 
@@ -203,7 +207,7 @@ function changeBackground() {
     }
     else {
         // NIGHT TIME (6:00 PM & BEYOND) (CHANGE THE ACTUAL COLORS)
-        $(".card-view").css("background", "radial-gradient(circle, #444444, #222222)");
+        $(".card-view").css("background", "radial-gradient(circle, #34495E, #2C3E50)");
     }
 }
 
@@ -220,11 +224,13 @@ $(document).ready(function() {
             // CONVERT TEMPERATURE TO CELCIUS
             temperature.innerHTML =  Math.ceil((temperature.innerHTML - 32) * (5/9));
             tempInF.innerHTML = "C";
+            tempUnit.innerHTML = "C";
         }
         else {
             // CONVERT TEMPERATURE TO FAHRENHEIT
             temperature.innerHTML = Math.ceil(temperature.innerHTML * (9/5) + 32);
             tempInF.innerHTML = "F";
+            tempUnit.innerHTML = "F";
         }
     }
 
