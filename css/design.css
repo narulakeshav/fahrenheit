@@ -18,7 +18,7 @@ body {
     background: radial-gradient(circle, #55B1FA, #2196F3);
     background-repeat: repeat;
     background-position: center;
-    padding: 40px 20px 20px 20px;
+    padding: 20px 20px;
     height: 325px;
 }
 .card-forecast {
@@ -30,8 +30,18 @@ body {
     color: #FFF;
     line-height: 20px;
     text-align: left;
+    margin-top: -20px;
+    margin-bottom: 25px;
 }
-#temperature-fa {
+.temp {
+    padding-top: 30px;
+    font-size: 80px;
+    color: #FFF;
+    line-height: 50px;
+    font-weight: 100;
+    text-align: left;
+}
+#temperature {
     padding-top: 30px;
     font-size: 80px;
     color: #FFF;
@@ -87,7 +97,7 @@ body {
 .temp-buttons {
     background: transparent;
     margin: 0;
-    width: 85px;
+    width: 40px;
     padding: 0;
     float: right;
     margin-top: -30px;
@@ -96,20 +106,16 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    border: 2px solid #FFF;
-    background: transparent;
+    border: none;
+    background: rgba(0,0,0,0.15);
     color: #FFF;
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 25px;
     padding-top: 4px;
     font-weight: bolder;
     transition: all .5s;
 }
 .temp-butt:hover {
-    background: #FFF;
-    color: #2196F3;
-}
-.selected {
     background: #FFF;
     color: #2196F3;
 }
