@@ -119,3 +119,14 @@ body {
     background: #FFF;
     color: #2196F3;
 }
+.btn-search {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: #FFF;
+    color: #444;
+    padding-top: 12px;
+}
