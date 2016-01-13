@@ -14,7 +14,6 @@ function convertKelvinToF(temp) {
 // DETERMINES WHETHER IT'S A DAY, EVENING, OR NIGHT TIME
 function dayEveningOrNight() {
     var time = new Date().getHours();
-    console.log(time);
 
     // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
     if(time <= 13) return -1;
