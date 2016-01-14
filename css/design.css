@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300);
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300);
+
+/* GENERAL HTML CSS */ 
 body {
     background: linear-gradient(#D67680, #BF7189, #5A4C69, #2A4961);
     height: 100vh;
@@ -8,6 +10,8 @@ body {
     padding-top: 50px;
     font-family: Raleway;
 }
+
+/* DIV PROPERTY CSS */
 .search-card {
     height: 60px;
     background: #FFF;
@@ -28,6 +32,92 @@ body {
 .card-forecast {
     padding: 20px 20px 130px;
     height: 150px;
+}
+.form-control,
+.form-control:focus {
+    border: none;
+    padding: 25px 15px;
+    border-radius: 0;
+    widows: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #FFF;
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    box-shadow: 0px 0px 0px transparent;
+}
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+.hideDiv {
+    display: none;
+}
+
+/* IMG PROPERTY CSS */
+.intro-img {
+    margin: 0 auto;
+    height: 150px;
+    width: auto;
+}
+
+/* BUTTON PROPERTY CSS */
+.temp-buttons {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    float: right;
+    margin-top: -30px;
+}
+.temp-butt,
+.temp-butt:focus {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: none;
+    background: rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    font-size: 16px;
+    margin-top: 25px;
+    padding-top: 4px;
+    font-weight: bolder;
+    transition: all .5s;
+    outline: none;
+    box-shadow: 0px 0px 0px transparent;
+}
+.temp-butt:hover {
+    background: #FFF;
+    color: #2196F3;
+}
+.btn-info,
+.btn-info:focus {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: #FFF;
+    color: #2A4961;
+    padding-top: 12px;
+    transition: all 0.5s;
+    border: none;
+}
+.btn-info:hover {
+    background: #D57680;
+    color: #FFF;
+    -webkit-transform: rotate(360deg);
+}
+
+/* TEXT PROPERTY CSS */
+.intro-text {
+    color: #333;
+    font-size: 35px;
+    text-align: center;
+}
+.intro-loading {
+    color: #888;
+    text-align: center;
+    font-size: 18px;
 }
 #weather-icon {
     font-size: 80px;
@@ -121,67 +211,6 @@ body {
 #f-or-c {
     font-size: 15px;
 }
-.temp-buttons {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-    float: right;
-    margin-top: -30px;
-}
-.temp-butt,
-.temp-butt:focus {
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    border: none;
-    background: rgba(0, 0, 0, 0.15);
-    color: #FFF;
-    font-size: 16px;
-    margin-top: 25px;
-    padding-top: 4px;
-    font-weight: bolder;
-    transition: all .5s;
-    outline: none;
-    box-shadow: 0px 0px 0px transparent;
-}
-.temp-butt:hover {
-    background: #FFF;
-    color: #2196F3;
-}
-.form-control,
-.form-control:focus {
-    border: none;
-    padding: 25px 15px;
-    border-radius: 0;
-    widows: 100%;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #FFF;
-    background: rgba(255, 255, 255, 0.3);
-    outline: none;
-    box-shadow: 0px 0px 0px transparent;
-}
-::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.9) !important;
-}
-.btn-search,
-.btn-search:focus {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    background: #FFF;
-    color: #2A4961;
-    padding-top: 12px;
-    transition: all 0.5s;
-}
-.btn-search:hover {
-    background: #D57680;
-    color: #FFF;
-    -webkit-transform: rotate(360deg);
-}
 .intro {
     background: #FFF;
     height: 100vh;
@@ -189,11 +218,6 @@ body {
     position: absolute;
     top: 0;
     padding-top: 150px;
-}
-.intro-img {
-    margin: 0 auto;
-    height: 150px;
-    width: auto;
 }
 .intro-text {
     color: #333;
