@@ -8,8 +8,12 @@ body {
     height: 100vh;
     background-repeat: repeat;
     background-position: center;
-    padding-top: 8%;
+    padding-top: 6%;
     font-family: Raleway;
+}
+.search-card {
+    height: 60px;
+    background: #FFF;
 }
 .card {
     padding: 0;
@@ -102,18 +106,23 @@ body {
     font-size: 20px;
 }
 #tom-icon,
+#tom-1x-icon,
 #tom-2x-icon,
 #tom-3x-icon {
     font-size: 25px;
     color: #666;
 }
 #tom-day,
+#tom-1x-day,
 #tom-2x-day,
 #tom-3x-day {
     font-size: 16px;
     color: #666;
     text-transform: uppercase;
     font-weight: bolder;
+}
+#f-or-c {
+    font-size: 15px;
 }
 .temp-buttons {
     background: transparent;
@@ -122,7 +131,8 @@ body {
     float: right;
     margin-top: -30px;
 }
-.temp-butt {
+.temp-butt,
+.temp-butt:focus {
     width: 40px;
     height: 40px;
     border-radius: 100%;
@@ -134,19 +144,36 @@ body {
     padding-top: 4px;
     font-weight: bolder;
     transition: all .5s;
+    outline: none;
+    box-shadow: 0px 0px 0px transparent;
 }
 .temp-butt:hover {
     background: #FFF;
     color: #2196F3;
 }
+.form-control {
+    border: none;
+    padding: 25px 15px;
+    border-radius: 0;
+    widows: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #FFF;
+    background: rgba(255,255,255,0.3);
+    outline: none;
+    box-shadow: 0px 0px 0px transparent;
+}
+::-webkit-input-placeholder {
+    color: rgba(255,255,255,0.9) !important;
+}
 .btn-search {
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    top: 20px;
     height: 50px;
     width: 50px;
     border-radius: 100%;
     background: #FFF;
-    color: #444;
+    color: #D27581;
     padding-top: 12px;
 }

@@ -31,6 +31,9 @@
     <!-- HTML form and heading -->
     <div class="col-md-12">
         <div class="col-md-4 col-md-offset-4">
+            <div class="row search">
+                <input type="text" class="form-control" placeholder="type city and press enter" />
+            </div>
             <div class="row card" align="center">
 
                 <!-- SHOWS THE CURRENT WEATHER FOR THE CURRENT CITY -->
@@ -51,18 +54,18 @@
                 <!-- SHOWS THE 5-DAY FORECAST FOR THE CURRENT CITY -->
                 <div class="card-forecast">
                     <div class="col-md-3">
-                        <p id="today"></p>
-                        <p id="today-icon">-</p>
-                        <p id="today-forecast-weather">
-                            <span id="today-forecast">-</span>&deg;
-                            <span id="f-or-c">F</span>
-                        </p>
-                    </div>
-                    <div class="col-md-3">
                         <p id="tom-day">-</p>
                         <p id="tom-icon">-</p>
                         <p id="tom-forecast-weather">
                             <span id="tom-forecast">-</span>&deg;
+                            <span id="f-or-c">-</span>
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p id="tom-1x-day">-</p>
+                        <p id="tom-1x-icon">-</p>
+                        <p id="tom-forecast-weather">
+                            <span id="tom-1x-forecast">-</span>&deg;
                             <span id="f-or-c">-</span>
                         </p>
                     </div>
@@ -86,10 +89,10 @@
             </div>
         </div>
     </div>
-
-    <!-- SEARCH BUTTON -->
-    <a class="btn btn-search"><span class="fa fa-search"></span></a>
     
+    <!-- INFO BUTTON -->
+    <a class="btn btn-search"><span class="fa fa-code-fork"></span></a>
+
     <!-- JAVASCRIPT CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
