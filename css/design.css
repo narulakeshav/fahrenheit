@@ -10,6 +10,12 @@ body {
     padding-top: 50px;
     font-family: Raleway;
 }
+a {
+    transition: all 0.5s;
+}
+a:hover {
+    text-decoration: none;
+}
 
 /* DIV PROPERTY CSS */
 .search-card {
@@ -30,8 +36,7 @@ body {
     height: 325px;
 }
 .card-forecast {
-    padding: 20px 20px 130px;
-    height: 150px;
+    padding: 10px 20px 130px;
 }
 .form-control,
 .form-control:focus {
@@ -98,7 +103,7 @@ body {
     border-radius: 100%;
     background: #FFF;
     color: #2A4961;
-    padding-top: 12px;
+    padding-top: 14px;
     transition: all 0.5s;
     border: none;
 }
@@ -149,9 +154,9 @@ body {
 }
 #city-name {
     color: #FFF;
-    font-size: 40px;
+    font-size: 30px;
     text-align: left;
-    padding-top: 8px;
+    padding-top: 15px;
 }
 #weather-info {
     color: rgba(255, 255, 255, 0.6);
@@ -160,56 +165,24 @@ body {
     font-weight: bolder;
     text-align: left;
 }
-#day-of-week {
-    font-size: 16px;
-    color: #999;
-    text-transform: uppercase;
-    font-weight: bolder;
-}
-#forecast-icon {
-    font-size: 25px;
-    color: #999;
-}
-#forecast-weather {
-    color: #999;
-    font-size: 20px;
-}
-#today {
-    font-size: 16px;
-    color: #2196F3;
-    text-transform: uppercase;
-    font-weight: bolder;
-}
-#today-icon {
-    font-size: 25px;
-    color: #2196F3;
-}
-#today-forecast-weather {
-    color: #2196F3;
-    font-size: 20px;
-}
+/* FORECAST */
 #tom-forecast-weather {
-    color: #666;
     font-size: 20px;
+    color: #666;
 }
 #tom-icon,
 #tom-1x-icon,
 #tom-2x-icon,
 #tom-3x-icon {
-    font-size: 25px;
-    color: #666;
+    font-size: 35px;
 }
 #tom-day,
 #tom-1x-day,
 #tom-2x-day,
 #tom-3x-day {
-    font-size: 16px;
-    color: #666;
-    text-transform: uppercase;
+    font-size: 14px;
+    color: #888;
     font-weight: bolder;
-}
-#f-or-c {
-    font-size: 15px;
 }
 .intro {
     background: #FFF;
@@ -229,6 +202,65 @@ body {
     text-align: center;
     font-size: 18px;
 }
-.hideDiv {
-    display: none;
+/* MODAL CSS */
+/* MODAL POPUP CSS */
+.modal-dialog {
+    padding-top: 100px;
+    width: 450px;
+}
+.modal-content {
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+}
+.modal-title {
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
+}
+.modal-text {
+    line-height: 28px;
+    font-size: 15px;
+    color: #555;
+    padding: 10px 5px;
+    padding-right: 10px;
+}
+.close {
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+.modal-close {
+    font-size: 20px;
+}
+.btn-social,
+.btn-social:focus {
+    background: #F0F0F0;
+    padding: 10px 12px;
+    border-radius: 2px;
+    color: #888;
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+.linkedin:hover {
+    background: #1985BC;
+    color: #FFF;
+}
+.twitter:hover {
+    background: #55ACEE;
+    color: #FFF;
+}
+.github:hover {
+    background: #444;
+    color: #FFF;
+}
+.link,
+.link:focus {
+    border-bottom: 1px dotted #D67680;
+    color: #D67680;
+}
+.link:hover {
+    color: #E34959;
+    border-color: #E34959;
 }
