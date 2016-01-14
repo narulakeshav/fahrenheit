@@ -17,9 +17,9 @@ function dayEveningOrNight() {
     var time = new Date().getHours();
 
     // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
-    if(time <= 12) return -1;
-    else if (time <= 17) return 0;
-    else return 1;
+    if(time <= 12) { return -1; }
+    else if (time <= 17) { return 0; }
+    else { return 1; }
 }
 
 // GETS THE CURRENT LOCATION OF THE USER
@@ -33,7 +33,6 @@ var url = function() {
             var lon = position.coords.longitude;
             // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
             var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-            console.log(url);
             $.getJSON(url, function(data) {
                 // GETS THE KEY VALUE PAIRS FROM THE JSON
                 var city = data.name;
@@ -45,10 +44,10 @@ var url = function() {
                 $("#page-title").html(city + ", " + country + " - Fahrenheit");
 
                 // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
-                if(city == "Taft Mosswood") cityName.innerHTML = "Stockton" + ", " + country;
+                if(city == "Taft Mosswood") { cityName.innerHTML = "Stockton" + ", " + country; }
                 else {
                     if(city.length > 9) { shortenCityName(); }
-                    else appendCountry(city, country); 
+                    else { appendCountry(city, country); }
                 }
                 if(description.length < 6) {
                     weatherDescription.innerHTML = "It's kinda " + description + "y";
@@ -56,123 +55,18 @@ var url = function() {
                 else {
                     weatherDescription.innerHTML = description.substring(0,1).toUpperCase() + description.substring(1);
                 }
-                changeBackground();
 
-                // SHOWING ICONS ACCORDING TO ID
-                if(weatherID >= 200 && weatherID <= 232) {
-                    // CASE THUNDERSTORM
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-thunderstorm'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-thunderstorm'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-thunderstorm'></i>";
-                    }
-                }
-                else if(weatherID >= 300 && weatherID <= 321) {
-                    // CASE DRIZZLE
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-sprinkle'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-sprinkle'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-sprinkle'></i>";
-                    }
-                }
-                else if(weatherID >= 500 && weatherID <= 504) {
-                    // CASE SHOWERS
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-showers'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-showers'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-showers'></i>";
-                    }
-                }
-                else if(weatherID >= 511 && weatherID <= 531) {
-                    // CASE RAIN
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-rain'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-rain'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-rain'></i>";
-                    }
-                }
-                else if(weatherID >= 600 && weatherID <= 622) {
-                    // CASE SNOW
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-snow'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-snow'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-snow'></i>";
-                    }
-                }
-                else if(weatherID >= 701 && weatherID <= 771) {
-                    // CASE FOG/MIST
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-fog'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-fog'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-fog'></i>";
-                    }
-                }
-                else if(weatherID == 781 || weatherID >= 900 && weatherID <= 901) {
-                    // CASE TORNADO
-                    weatherIcon.innerHTML = "<i class='wi wi-tornado'></i>";
-                }
-                else if(weatherID >= 801 && weatherID <= 804) {
-                    // CASE CLOUDY
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-cloudy'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-cloudy'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-cloud'></i>";
-                    }
-                }
-                else if(weatherID >= 951 && weatherID <= 959) {
-                    // CASE WINDY
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-cloudy-gusts'></i>";
-                    }
-                    else if(dayEveningOrNight() == 1){
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-cloudy-gusts'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-strong-wind'></i>";
-                    }
-                }
-                else if(weatherID == 962 || weatherID == 902) {
-                    // CASE HURRICANE
-                    weatherIcon.innerHTML = "<i class='wi wi-hurricane'></i>";
-                }
-                else {
-                    // IT'S JUST SUNNY
-                    weatherIcon.innerHTML = "<i class='wi wi-sunny'></i>";
-                    if(dayEveningOrNight() == -1) {
-                        weatherIcon.innerHTML = "<i class='wi wi-day-sunny'></i>";
-                    }
-                    else {
-                        weatherIcon.innerHTML = "<i class='wi wi-night-alt-cloudy-gusts'></i>";
-                    }
-                }
+                // CHANGE CARD BACKGROUND
+                changeBackground();
+                weatherIcon.innerHTML = getRightIcon(weatherID);
+
+                // SHOW CURRENT WEATHER IN FORECAST
+                var today = new Date();
+                var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                today = weekday[today.getDay()];
+                $("#today").html(today);
+                $("#today-forecast-icon").html(weatherIcon.innerHTML);
+                $("#today-forecast-weather").html(temperature.innerHTML);
             });
         });
     }
@@ -180,8 +74,170 @@ var url = function() {
     else {
         alert("Geolocation not supported by your Browser. Try maybe .. Chrome?");
     }
-}
+};
 
+// GET THE CURRENT CITY'S FORECAST FOR 3 DAYS
+var forecast = function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        // OPENWEATHER API KEY
+        var APIKey = '79bb2d50ad8139554edb48834a59e016';
+        // GET LATITUDE AND LONGITUDE POSITION
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+        console.log(url);
+
+        // USE GET JSON TO CONVERT THE DATA
+        $.getJSON(url, function(data) {
+            // FORECAST FOR TOMORROW
+            var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            var tomTemp = convertKelvinToF(data.list[6].main.temp);
+            var tomID = data.list[6].weather[0].id;
+            var tomDay = new Date(data.list[6].dt_txt);
+            tomDay = weekday[tomDay.getDay()];
+            $("#tom-forecast").html = tomTemp;
+            $("#tom-day").html = tomDay ;
+            $("#tom-icon").html = getRightIcon(tomID);
+
+            // FORECAST FOR DAY AFTER TOMORROW
+            var tom2xTemp = convertKelvinToF(data.list[14].main.temp);
+            var tom2xID = data.list[14].weather[0].id;
+            var tom2xDate = new Date(data.list[14].dt_txt);
+            tom2xDay = weekday[tom2xDate.getDay()];
+            $("#tom-2x-forecast").html = tom2xTemp;
+            $("#tom-2x-day").html = tom2xDay;
+            $("#tom-2x-icon").html = getRightIcon(tom2xID);
+
+            // FORECAST FOR DAY AFTER TOMORROW
+            var tom3xTemp = convertKelvinToF(data.list[22].main.temp);
+            var tom3xID = data.list[22].weather[0].id;
+            var tom3xDate = new Date(data.list[22].dt_txt);
+            tom3xDay = weekday[tom3xDate.getDay()];
+            $("#tom-3x-forecast").html = tom3xTemp;
+            $("#tom-3x-day").html = tom3xDay;
+            $("#tom-3x-icon").html = getRightIcon(tom3xID);
+        });
+    });
+};
+
+// GETS THE ICON BASED ON WEATHER ID
+function getRightIcon(id) {
+    if(id >= 200 && id <= 232) {
+        // CASE THUNDERSTORM
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-thunderstorm'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-thunderstorm'></i>";
+        }
+        else {
+            return "<i class='wi wi-thunderstorm'></i>";
+        }
+    }
+    else if(id >= 300 && id <= 321) {
+        // CASE DRIZZLE
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-sprinkle'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-sprinkle'></i>";
+        }
+        else {
+            return "<i class='wi wi-sprinkle'></i>";
+        }
+    }
+    else if(id >= 500 && id <= 504) {
+        // CASE SHOWERS
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-showers'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-showers'></i>";
+        }
+        else {
+            return "<i class='wi wi-showers'></i>";
+        }
+    }
+    else if(id >= 511 && id <= 531) {
+        // CASE RAIN
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-rain'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-rain'></i>";
+        }
+        else {
+            return "<i class='wi wi-rain'></i>";
+        }
+    }
+    else if(id >= 600 && id <= 622) {
+        // CASE SNOW
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-snow'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-snow'></i>";
+        }
+        else {
+            return "<i class='wi wi-snow'></i>";
+        }
+    }
+    else if(id >= 701 && id <= 771) {
+        // CASE FOG/MIST
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-fog'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-fog'></i>";
+        }
+        else {
+            return "<i class='wi wi-fog'></i>";
+        }
+    }
+    else if(id == 781 || id >= 900 && id <= 901) {
+        // CASE TORNADO
+        return "<i class='wi wi-tornado'></i>";
+    }
+    else if(id >= 801 && id <= 804) {
+        // CASE CLOUDY
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-cloudy'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-cloudy'></i>";
+        }
+        else {
+            return "<i class='wi wi-cloud'></i>";
+        }
+    }
+    else if(id >= 951 && id <= 959) {
+        // CASE WINDY
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-cloudy-gusts'></i>";
+        }
+        else if(dayEveningOrNight() == 1){
+            return "<i class='wi wi-night-alt-cloudy-gusts'></i>";
+        }
+        else {
+            return "<i class='wi wi-strong-wind'></i>";
+        }
+    }
+    else if(id == 962 || id == 902) {
+        // CASE HURRICANE
+        return "<i class='wi wi-hurricane'></i>";
+    }
+    else {
+        // IT'S JUST SUNNY
+        if(dayEveningOrNight() == -1) {
+            return "<i class='wi wi-day-sunny'></i>";
+        }
+        else {
+            return "<i class='wi wi-night-alt-cloudy-gusts'></i>";
+        }
+    }
+}
 
 // SHORTEN THE CITY NAME IF LONGER THAN 9 CHARACTERS
 function shortenCityName() {
@@ -236,8 +292,11 @@ function buttonOnNoHover() {
 
 // CALLING THE URL VARIABLE TO GET GEOLOCATION
 url();
+forecast();
 
-var reload = setInterval(url, 10000);
+// LOADS THE WEATHER EVERY TEN SECONDS
+var reloadCurrent = setInterval(url, 10000);
+var reloadForecast = setInterval(forecast, 10000);
 
 $(document).ready(function() {
 
@@ -255,6 +314,5 @@ $(document).ready(function() {
             tempInF.innerHTML = "F";
             tempUnit.innerHTML = "F";
         }
-    }
-
+    };
 });
