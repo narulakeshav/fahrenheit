@@ -3,7 +3,7 @@
 
 /* GENERAL HTML CSS */ 
 body {
-    background: linear-gradient(#D67680, #BF7189, #5A4C69, #2A4961);
+    background: linear-gradient(#7FB1C9, #A570CC);
     height: 100vh;
     background-repeat: repeat;
     background-position: center;
@@ -47,7 +47,7 @@ a:hover {
     margin-bottom: 10px;
     font-size: 16px;
     color: #FFF;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0,0,0,0.1);
     outline: none;
     box-shadow: 0px 0px 0px transparent;
 }
@@ -61,7 +61,7 @@ a:hover {
 /* IMG PROPERTY CSS */
 .intro-img {
     margin: 0 auto;
-    height: 150px;
+    height: 120px;
     width: auto;
 }
 
@@ -102,13 +102,13 @@ a:hover {
     width: 50px;
     border-radius: 100%;
     background: #FFF;
-    color: #2A4961;
+    color: #A373CC;
     padding-top: 14px;
     transition: all 0.5s;
     border: none;
 }
 .btn-info:hover {
-    background: #D57680;
+    background: #55B1FA;
     color: #FFF;
     -webkit-transform: rotate(360deg);
 }
@@ -257,10 +257,10 @@ a:hover {
 }
 .link,
 .link:focus {
-    border-bottom: 1px dotted #D67680;
-    color: #D67680;
+    border-bottom: 1px dotted #A373CC;
+    color: #A373CC;
 }
 .link:hover {
-    color: #E34959;
-    border-color: #E34959;
+    color: #A766DE;
+    border-color: #A766DE;
 }
