@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    // CALLING THE URL VARIABLE TO GET GEOLOCATION
+    url();
 
     // INITIATING WOWJS FILE
     new WOW().init();
@@ -17,10 +19,28 @@ $(document).ready(function() {
     var tempInF = document.getElementById("convert-unit");
     var tempUnit = document.getElementById("temp-type");
 
+    // FOR THE TEMPERATURE FORECAST
+    var tempForecast0 = document.getElementById("tom-forecast");
+    var tempForecast1 = document.getElementById("tom-1x-forecast");
+    var tempForecast2 = document.getElementById("tom-2x-forecast");
+    var tempForecast3 = document.getElementById("tom-3x-forecast");
+
+    // DAY FORECAST
+    var dayForecast0 = document.getElementById("tom-day");
+    var dayForecast1 = document.getElementById("tom-1x-day");
+    var dayForecast2 = document.getElementById("tom-2x-day");
+    var dayForecast3 = document.getElementById("tom-3x-day");
+
+    // ICON FORECAST
+    var iconForecast0 = document.getElementById("tom-icon");
+    var iconForecast1 = document.getElementById("tom-1x-icon");
+    var iconForecast2 = document.getElementById("tom-2x-icon");
+    var iconForecast3 = document.getElementById("tom-3x-icon");
+
     // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
     function convertKelvinToF(temp) {
         var KELVIN_FORMULA = 459.67;
-        return Math.ceil((temp * (9 / 5) - KELVIN_FORMULA));
+        return Math.round((temp * (9 / 5) - KELVIN_FORMULA));
     }
 
     // DETERMINES WHETHER IT'S A DAY, EVENING, OR NIGHT TIME
@@ -36,125 +56,6 @@ $(document).ready(function() {
             return -1;
         }
     }
-
-    // GETS THE CURRENT LOCATION OF THE USER
-    var url = function() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                // OPENWEATHER API KEY
-                var APIKey = '79bb2d50ad8139554edb48834a59e016';
-                // GET LATITUDE AND LONGITUDE POSITION
-                var lat = position.coords.latitude;
-                var lon = position.coords.longitude;
-                // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
-                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-                $.getJSON(url, function(data) {
-                    // GETS THE KEY VALUE PAIRS FROM THE JSON
-                    var city = data.name;
-                    var country = data.sys.country;
-                    var description = data.weather[0].description;
-                    var weatherID = data.weather[0].id;
-                    temperature.innerHTML = convertKelvinToF(data.main.temp);
-
-                    $("#page-title").html(changeDescription(description) + " - Fahrenheit");
-
-                    // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
-                    if (city == "Taft Mosswood") {
-                        cityName.innerHTML = "Stockton" + ", " + country;
-                    } else {
-                        if (city.length > 9) {
-                            shortenCityName();
-                        } else {
-                            appendCountry(city, country);
-                        }
-                    }
-                    changeDescription(description);
-
-                    // CHANGE CARD BACKGROUND
-                    changeBackground();
-                    weatherIcon.innerHTML = getRightIcon(weatherID);
-                });
-            });
-        }
-        // IF NOT SUPPORTED, ALERT IT'S NOT SUPPORTED
-        else {
-            alert("Geolocation not supported by your Browser. Try maybe .. Chrome?");
-        }
-    };
-
-    // GET THE CURRENT CITY'S FORECAST FOR 3 DAYS
-    var forecast = function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            // OPENWEATHER API KEY
-            var APIKey = '79bb2d50ad8139554edb48834a59e016';
-            // GET LATITUDE AND LONGITUDE POSITION
-            var lat = position.coords.latitude;
-            var lon = position.coords.longitude;
-            // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
-            var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-
-            // USE GET JSON TO CONVERT THE DATA
-            $.getJSON(url, function(data) {
-                // TEMPERATURE FORECAST
-                var tempForecast0 = document.getElementById("tom-forecast");
-                var tempForecast1 = document.getElementById("tom-1x-forecast");
-                var tempForecast2 = document.getElementById("tom-2x-forecast");
-                var tempForecast3 = document.getElementById("tom-3x-forecast");
-
-                // DAY FORECAST
-                var dayForecast0 = document.getElementById("tom-day");
-                var dayForecast1 = document.getElementById("tom-1x-day");
-                var dayForecast2 = document.getElementById("tom-2x-day");
-                var dayForecast3 = document.getElementById("tom-3x-day");
-
-                // ICON FORECAST
-                var iconForecast0 = document.getElementById("tom-icon");
-                var iconForecast1 = document.getElementById("tom-1x-icon");
-                var iconForecast2 = document.getElementById("tom-2x-icon");
-                var iconForecast3 = document.getElementById("tom-3x-icon");
-
-                // THE TEMP DEGREE ON THE FORECAST
-                var forecastDegree = document.getElementById("f-or-c");
-
-                var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-                var tom_one_ID = data.list[4].weather[0].id;
-                var tom_one_Day = new Date(data.list[4].dt_txt);
-                tom_one_Day = weekday[tom_one_Day.getDay()];
-                tempForecast0.innerHTML = convertKelvinToF(data.list[4].main.temp);
-                dayForecast0.innerHTML = tom_one_Day;
-                iconForecast0.innerHTML = getRightIcon(tom_one_ID);
-
-                var tomID = data.list[12].weather[0].id;
-                var tomDay = new Date(data.list[12].dt_txt);
-                tomDay = weekday[tomDay.getDay()];
-                tempForecast1.innerHTML = convertKelvinToF(data.list[12].main.temp);
-                dayForecast1.innerHTML = tomDay;
-                iconForecast1.innerHTML = getRightIcon(tomID);
-
-                // FORECAST FOR DAY AFTER TOMORROW
-                var tom_two_ID = data.list[20].weather[0].id;
-                var tom_two_Day = new Date(data.list[20].dt_txt);
-                tom_two_Day = weekday[tom_two_Day.getDay()];
-                tempForecast2.innerHTML = convertKelvinToF(data.list[20].main.temp);
-                dayForecast2.innerHTML = tom_two_Day;
-                iconForecast2.innerHTML = getRightIcon(tom_two_ID);
-
-                // FORECAST FOR DAY AFTER TOMORROW'S TOMORROW
-                var tom_three_ID = data.list[28].weather[0].id;
-                var tom_three_Day = new Date(data.list[28].dt_txt);
-                tom_three_Day = weekday[tom_three_Day.getDay()];
-                tempForecast3.innerHTML = convertKelvinToF(data.list[28].main.temp);
-                dayForecast3.innerHTML = tom_three_Day;
-                iconForecast3.innerHTML = getRightIcon(tom_three_ID);
-
-                forecastDegree.innerHTML = "F";
-            });
-        });
-    };
-    // CALLING THE URL VARIABLE TO GET GEOLOCATION
-    url();
-    forecast();
 
     // CHANGES THE DESCRIPTION IF NECESSARY
     function changeDescription(description) {
@@ -257,12 +158,6 @@ $(document).ready(function() {
         }
     }
 
-    // SHORTEN THE CITY NAME IF LONGER THAN 9 CHARACTERS
-    function shortenCityName() {
-        $("#city-name").css("font-size", "25px");
-        $("#city-name").css("padding-top", "15px");
-    }
-
     // APPENDS THE COUNTRY ABBREVIATION AFTER THE CITY NAME
     function appendCountry(city, countryName) {
         cityName.innerHTML = city + ", " + countryName;
@@ -275,14 +170,26 @@ $(document).ready(function() {
             // DAY TIME (5:00 AM)
             $(".card-view").css("background", "radial-gradient(circle, #FCD057, #FD8934)");
             $("#convert-unit").hover(dayTimeHover, buttonOnNoHover);
+            $("#tom-icon").css("color", "#FCD057");
+            $("#tom-1x-icon").css("color", "#FCD057");
+            $("#tom-2x-icon").css("color", "#FCD057");
+            $("#tom-3x-icon").css("color", "#FCD057");
         } else if (time == 0) {
             // EVENING TIME (5:00 PM)
             $(".card-view").css("background", "radial-gradient(circle, #55B1FA, #2196F3)");
             $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
+            $("#tom-icon").css("color", "#55B1FA");
+            $("#tom-1x-icon").css("color", "#55B1FA");
+            $("#tom-2x-icon").css("color", "#55B1FA");
+            $("#tom-3x-icon").css("color", "#55B1FA");
         } else {
             // NIGHT TIME (6:00 PM & BEYOND) (CHANGE THE ACTUAL COLORS)
             $(".card-view").css("background", "radial-gradient(circle, #34495E, #2C3E50)");
             $("#convert-unit").hover(nightTimeHover, buttonOnNoHover);
+            $("#tom-icon").css("color", "34495E");
+            $("#tom-1x-icon").css("color", "#34495E");
+            $("#tom-2x-icon").css("color", "#34495E");
+            $("#tom-3x-icon").css("color", "#34495E");
         }
     }
 
@@ -300,6 +207,9 @@ $(document).ready(function() {
     function nightTimeHover() {
         $("#convert-unit").css("color", "#2C3E50");
     }
+    function differentLocation() {
+        $("#convert-unit").css("color", "#8FA193");
+    }
 
     // NO HOVER ON BUTTONS
     function buttonOnNoHover() {
@@ -311,11 +221,19 @@ $(document).ready(function() {
         if (tempInF.innerHTML == "F") {
             // CONVERT TEMPERATURE TO CELCIUS
             temperature.innerHTML = Math.floor((temperature.innerHTML - 32) * (5 / 9));
+            tempForecast0.innerHTML = Math.floor((tempForecast0.innerHTML - 32) * (5 / 9));
+            tempForecast1.innerHTML = Math.floor((tempForecast1.innerHTML - 32) * (5 / 9));
+            tempForecast2.innerHTML = Math.floor((tempForecast2.innerHTML - 32) * (5 / 9));
+            tempForecast3.innerHTML = Math.floor((tempForecast3.innerHTML - 32) * (5 / 9));
             tempInF.innerHTML = "C";
             tempUnit.innerHTML = "C";
         } else {
             // CONVERT TEMPERATURE TO FAHRENHEIT
             temperature.innerHTML = Math.ceil(temperature.innerHTML * (9 / 5) + 32);
+            tempForecast0.innerHTML = Math.ceil(tempForecast0.innerHTML * (9 / 5) + 32);
+            tempForecast1.innerHTML = Math.ceil(tempForecast1.innerHTML * (9 / 5) + 32);
+            tempForecast2.innerHTML = Math.ceil(tempForecast2.innerHTML * (9 / 5) + 32);
+            tempForecast3.innerHTML = Math.ceil(tempForecast3.innerHTML * (9 / 5) + 32);
             tempInF.innerHTML = "F";
             tempUnit.innerHTML = "F";
         }
@@ -328,42 +246,122 @@ $(document).ready(function() {
         }
     });
 
+    // GETS THE CURRENT LOCATION OF THE USER
+    function url() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // OPENWEATHER API KEY
+                var APIKey = '79bb2d50ad8139554edb48834a59e016';
+                // GET LATITUDE AND LONGITUDE POSITION
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
+                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+                forecast(lon, lat, APIKey);
+                $.getJSON(url, function(data) {
+                    // GETS THE KEY VALUE PAIRS FROM THE JSON
+                    var city = data.name;
+                    var country = data.sys.country;
+                    var description = data.weather[0].description;
+                    var weatherID = data.weather[0].id;
+                    temperature.innerHTML = convertKelvinToF(data.main.temp);
+                    description = changeDescription(description);
+
+                    // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
+                    if (city == "Taft Mosswood") {
+                        cityName.innerHTML = "Stockton" + ", " + country;
+                    } else {
+                        appendCountry(city, country);
+                    }
+                    // CHANGE CARD BACKGROUND
+                    changeBackground();
+                    weatherIcon.innerHTML = getRightIcon(weatherID);
+                    $("#page-title").html(weatherDescription.innerHTML + " - Fahrenheit");
+                });
+            });
+        }
+        // IF NOT SUPPORTED, ALERT IT'S NOT SUPPORTED
+        else {
+            alert("Geolocation not supported by your Browser. Try maybe .. Chrome?");
+        }
+    }
+
+    // GET THE CURRENT CITY'S FORECAST FOR 3 DAYS
+    function forecast(lon, lat, APIKey) {
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+        $.getJSON(url, function(data) {
+
+            var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            var tom_one_ID = data.list[5].weather[0].id;
+            var tom_one_Day = new Date(data.list[5].dt_txt);
+            tom_one_Day = weekday[tom_one_Day.getDay()];
+            tempForecast0.innerHTML = convertKelvinToF(data.list[5].main.temp);
+            dayForecast0.innerHTML = tom_one_Day;
+            iconForecast0.innerHTML = getRightIcon(tom_one_ID);
+
+            var tomID = data.list[13].weather[0].id;
+            var tomDay = new Date(data.list[13].dt_txt);
+            tomDay = weekday[tomDay.getDay()];
+            tempForecast1.innerHTML = convertKelvinToF(data.list[13].main.temp);
+            dayForecast1.innerHTML = tomDay;
+            iconForecast1.innerHTML = getRightIcon(tomID);
+
+            // FORECAST FOR DAY AFTER TOMORROW
+            var tom_two_ID = data.list[21].weather[0].id;
+            var tom_two_Day = new Date(data.list[21].dt_txt);
+            tom_two_Day = weekday[tom_two_Day.getDay()];
+            tempForecast2.innerHTML = convertKelvinToF(data.list[21].main.temp);
+            dayForecast2.innerHTML = tom_two_Day;
+            iconForecast2.innerHTML = getRightIcon(tom_two_ID);
+
+            // FORECAST FOR DAY AFTER TOMORROW'S TOMORROW
+            var tom_three_ID = data.list[29].weather[0].id;
+            var tom_three_Day = new Date(data.list[29].dt_txt);
+            tom_three_Day = weekday[tom_three_Day.getDay()];
+            tempForecast3.innerHTML = convertKelvinToF(data.list[29].main.temp);
+            dayForecast3.innerHTML = tom_three_Day;
+            iconForecast3.innerHTML = getRightIcon(tom_three_ID);
+        });
+    }
+
     function search(inputCity) {
         navigator.geolocation.getCurrentPosition(function(position) {
             // API KEY
             var APIKey = '79bb2d50ad8139554edb48834a59e016';
             // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
             var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + inputCity + '&appid=' + APIKey;
-            console.log(url);
 
             $.getJSON(url, function(data) {
+                // GET LONG/LAT TO GET FORECAST
+                var lon = data.coord.lon;
+                var lat = data.coord.lat;
+                forecast(lon, lat, APIKey);
+
                 // GETS THE KEY VALUE PAIRS FROM THE JSON
                 var city = data.name;
                 var country = data.sys.country;
                 var description = data.weather[0].description;
                 var weatherID = data.weather[0].id;
-                temperature.innerHTML = "";
                 temperature.innerHTML = convertKelvinToF(data.main.temp);
-
-                $("#page-title").html(city + ", " + country + " - Fahrenheit");
+                description = changeDescription(description);
 
                 // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
-                if (city.length > 11) {
-                    shortenCityName();
+                if (city == "Taft Mosswood") {
                     cityName.innerHTML = "Stockton" + ", " + country;
-                }
-                appendCountry(city, country);
-                if (description == "haze") {
-                    weatherDescription.innerHTML = "It's kinda hazy";
-                } else if (description.length < 6) {
-                    weatherDescription.innerHTML = "It's kinda " + description + "y";
-                } else {
-                    weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1);
-                }
+                } 
+                else { appendCountry(city, country); }
 
-                // CHANGE CARD BACKGROUND
-                changeBackground();
+                // CHANGING THE ICONS
                 weatherIcon.innerHTML = getRightIcon(weatherID);
+                // CHANGE CARD BACKGROUND
+                $(".card-view").css("background", "radial-gradient(circle, #A2B3A6, #8FA193)");
+                $("#tom-icon").css("color", "#8FA193");
+                $("#tom-1x-icon").css("color", "#8FA193");
+                $("#tom-2x-icon").css("color", "#8FA193");
+                $("#tom-3x-icon").css("color", "#8FA193");
+                $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
+                $("#page-title").html(weatherDescription.innerHTML + " - Fahrenheit");
             });
         });
     }
