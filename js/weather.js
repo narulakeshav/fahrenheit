@@ -56,7 +56,7 @@ $(document).ready(function() {
                     var weatherID = data.weather[0].id;
                     temperature.innerHTML = convertKelvinToF(data.main.temp);
 
-                    $("#page-title").html(city + ", " + country + " - Fahrenheit");
+                    $("#page-title").html(changeDescription(description) + " - Fahrenheit");
 
                     // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
                     if (city == "Taft Mosswood") {
