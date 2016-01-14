@@ -148,7 +148,8 @@ body {
     background: #FFF;
     color: #2196F3;
 }
-.form-control {
+.form-control,
+.form-control:focus {
     border: none;
     padding: 25px 15px;
     border-radius: 0;
