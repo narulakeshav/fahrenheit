@@ -31,7 +31,7 @@
 
 <body>
     <!-- SHOW FOR 4 SECONDS WHILE DATA LOADS -->
-    <div class="col-md-12 intro wow slideOutRight" data-wow-delay="3.6s">
+    <div class="col-md-12 intro wow fadeOutDown" data-wow-delay="3.6s">
         <img src="logo.png" class="intro-img img-responsive wow fadeIn" data-wow-delay="0.1s">
         <p class="intro-text wow fadeIn" data-wow-delay="0.2s">Welcome to Fahrenheit</p>
         <p class="intro-loading wow fadeIn" data-wow-delay="0.6s">
@@ -68,39 +68,35 @@
                 <div class="card-forecast">
                     <!-- DAY 1 FORECAST -->
                     <div class="col-xs-3">
-                        <p id="tom-day">-</p>
                         <p id="tom-icon">-</p>
                         <p id="tom-forecast-weather">
                             <span id="tom-forecast">-</span>&deg;
-                            <span id="f-or-c">F</span>
                         </p>
+                        <p id="tom-day">-</p>
                     </div>
                     <!-- DAY 2 FORECAST -->
                     <div class="col-xs-3">
-                        <p id="tom-1x-day">-</p>
                         <p id="tom-1x-icon">-</p>
                         <p id="tom-forecast-weather">
                             <span id="tom-1x-forecast">-</span>&deg;
-                            <span id="f-or-c">F</span>
                         </p>
+                        <p id="tom-1x-day">-</p>
                     </div>
                     <!-- DAY 3 FORECAST -->
                     <div class="col-xs-3">
-                        <p id="tom-2x-day">-</p>
                         <p id="tom-2x-icon">-</p>
                         <p id="tom-forecast-weather">
                             <span id="tom-2x-forecast">-</span>&deg;
-                            <span id="f-or-c">F</span>
                         </p>
+                        <p id="tom-2x-day">-</p>
                     </div>
                     <!-- DAY 4 FORECAST -->
                     <div class="col-xs-3">
-                        <p id="tom-3x-day">-</p>
                         <p id="tom-3x-icon">-</p>
                         <p id="tom-forecast-weather">
                             <span id="tom-3x-forecast">-</span>&deg;
-                            <span id="f-or-c">F</span>
                         </p>
+                        <p id="tom-3x-day">-</p>
                     </div>
                 </div>
             </div>
@@ -108,7 +104,34 @@
     </div>
 
     <!-- INFO BUTTON -->
-    <a class="btn btn-info"><span class="fa fa-clone"></span></a>
+    <a class="btn btn-info" data-toggle="modal" data-target="#myModal"><span class="fa fa-clone"></span></a>
+    <!-- Button -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-close">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-clone"></span>&nbsp;&nbsp;Fahrenheit by Keshav Narula</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">
+                        Fahrenheit is an online weather application that shows your current weather of your city, along with the forecast. You can also look for weather and forecast of different cities. <a href="#" class="link">This project is inspired by FreeCodeCamp</span>.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://twitter.com/NarulaKeshav" class="btn btn-social twitter" target="_blank">
+                        <span class="fa fa-twitter"></span>&nbsp;&nbsp;Follow
+                    </a>
+                    <a href="https://github.com/NarulaKeshav/fahrenheit" class="btn btn-social github"target="_blank">
+                        <span class="fa fa-github"></span>&nbsp;&nbsp;View Repo
+                    </a>
+                    <a href="https://linkedin.com/in/NarulaKeshav" class="btn btn-social linkedin"target="_blank">
+                        <span class="fa fa-linkedin"></span>&nbsp;&nbsp;View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JAVASCRIPT CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
