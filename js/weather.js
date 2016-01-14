@@ -33,6 +33,7 @@ var url = function() {
             var lon = position.coords.longitude;
             // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
             var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+            console.log(url);
             $.getJSON(url, function(data) {
                 // GETS THE KEY VALUE PAIRS FROM THE JSON
                 var city = data.name;
@@ -59,14 +60,6 @@ var url = function() {
                 // CHANGE CARD BACKGROUND
                 changeBackground();
                 weatherIcon.innerHTML = getRightIcon(weatherID);
-
-                // SHOW CURRENT WEATHER IN FORECAST
-                var today = new Date();
-                var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                today = weekday[today.getDay()];
-                $("#today").html(today);
-                $("#today-forecast-icon").html(weatherIcon.innerHTML);
-                $("#today-forecast-weather").html(temperature.innerHTML);
             });
         });
     }
@@ -90,34 +83,60 @@ var forecast = function() {
 
         // USE GET JSON TO CONVERT THE DATA
         $.getJSON(url, function(data) {
-            // FORECAST FOR TOMORROW
+            // TEMPERATURE FORECAST
+            var tempForecast0 = document.getElementById("tom-forecast");
+            var tempForecast1 = document.getElementById("tom-1x-forecast");
+            var tempForecast2 = document.getElementById("tom-2x-forecast");
+            var tempForecast3 = document.getElementById("tom-3x-forecast");
+
+            // DAY FORECAST
+            var dayForecast0 = document.getElementById("tom-day");
+            var dayForecast1 = document.getElementById("tom-1x-day");
+            var dayForecast2 = document.getElementById("tom-2x-day");
+            var dayForecast3 = document.getElementById("tom-3x-day");
+
+            // ICON FORECAST
+            var iconForecast0 = document.getElementById("tom-icon");
+            var iconForecast1 = document.getElementById("tom-1x-icon");
+            var iconForecast2 = document.getElementById("tom-2x-icon");
+            var iconForecast3 = document.getElementById("tom-3x-icon");
+
+            // THE TEMP DEGREE ON THE FORECAST
+            var forecastDegree = document.getElementById("f-or-c");
+
             var weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-            var tomTemp = convertKelvinToF(data.list[6].main.temp);
-            var tomID = data.list[6].weather[0].id;
-            var tomDay = new Date(data.list[6].dt_txt);
+            var tom_one_ID = data.list[4].weather[0].id;
+            var tom_one_Day = new Date(data.list[4].dt_txt);
+            tom_one_Day = weekday[tom_one_Day.getDay()];
+            tempForecast0.innerHTML = convertKelvinToF(data.list[4].main.temp);
+            dayForecast0.innerHTML = tom_one_Day;
+            iconForecast0.innerHTML = getRightIcon(tom_one_ID);
+
+            var tomID = data.list[12].weather[0].id;
+            var tomDay = new Date(data.list[12].dt_txt);
             tomDay = weekday[tomDay.getDay()];
-            $("#tom-forecast").html = tomTemp;
-            $("#tom-day").html = tomDay ;
-            $("#tom-icon").html = getRightIcon(tomID);
+            tempForecast1.innerHTML = convertKelvinToF(data.list[12].main.temp);
+            dayForecast1.innerHTML = tomDay;
+            iconForecast1.innerHTML = getRightIcon(tomID);
 
             // FORECAST FOR DAY AFTER TOMORROW
-            var tom2xTemp = convertKelvinToF(data.list[14].main.temp);
-            var tom2xID = data.list[14].weather[0].id;
-            var tom2xDate = new Date(data.list[14].dt_txt);
-            tom2xDay = weekday[tom2xDate.getDay()];
-            $("#tom-2x-forecast").html = tom2xTemp;
-            $("#tom-2x-day").html = tom2xDay;
-            $("#tom-2x-icon").html = getRightIcon(tom2xID);
+            var tom_two_ID = data.list[20].weather[0].id;
+            var tom_two_Day = new Date(data.list[20].dt_txt);
+            tom_two_Day = weekday[tom_two_Day.getDay()];
+            tempForecast2.innerHTML = convertKelvinToF(data.list[20].main.temp);
+            dayForecast2.innerHTML = tom_two_Day;
+            iconForecast2.innerHTML = getRightIcon(tom_two_ID);
 
-            // FORECAST FOR DAY AFTER TOMORROW
-            var tom3xTemp = convertKelvinToF(data.list[22].main.temp);
-            var tom3xID = data.list[22].weather[0].id;
-            var tom3xDate = new Date(data.list[22].dt_txt);
-            tom3xDay = weekday[tom3xDate.getDay()];
-            $("#tom-3x-forecast").html = tom3xTemp;
-            $("#tom-3x-day").html = tom3xDay;
-            $("#tom-3x-icon").html = getRightIcon(tom3xID);
+            // FORECAST FOR DAY AFTER TOMORROW'S TOMORROW
+            var tom_three_ID = data.list[28].weather[0].id;
+            var tom_three_Day = new Date(data.list[28].dt_txt);
+            tom_three_Day = weekday[tom_three_Day.getDay()];
+            tempForecast3.innerHTML = convertKelvinToF(data.list[28].main.temp);
+            dayForecast3.innerHTML = tom_three_Day;
+            iconForecast3.innerHTML = getRightIcon(tom_three_ID);
+
+            forecastDegree.innerHTML = "F";
         });
     });
 };
@@ -304,7 +323,7 @@ $(document).ready(function() {
     tempInF.onclick = function() {
         if(tempInF.innerHTML == "F") {
             // CONVERT TEMPERATURE TO CELCIUS
-            temperature.innerHTML =  Math.ceil((temperature.innerHTML - 32) * (5/9));
+            temperature.innerHTML =  Math.floor((temperature.innerHTML - 32) * (5/9));
             tempInF.innerHTML = "C";
             tempUnit.innerHTML = "C";
         }
