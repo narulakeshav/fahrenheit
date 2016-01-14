@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-repeat: repeat;
     background-position: center;
-    padding-top: 6%;
+    padding-top: 50px;
     font-family: Raleway;
 }
 .search-card {
@@ -16,7 +16,7 @@ body {
     padding: 0;
     height: 475px;
     background: #FFF;
-    box-shadow: 2px 5px 8px rgba(0,0,0,0.2);
+    box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.2);
 }
 .card-view {
     background: radial-gradient(circle, #55B1FA, #2196F3);
@@ -64,7 +64,7 @@ body {
     padding-top: 8px;
 }
 #weather-info {
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 25px;
     line-height: 0;
     font-weight: bolder;
@@ -134,7 +134,7 @@ body {
     height: 40px;
     border-radius: 100%;
     border: none;
-    background: rgba(0,0,0,0.15);
+    background: rgba(0, 0, 0, 0.15);
     color: #FFF;
     font-size: 16px;
     margin-top: 25px;
@@ -157,23 +157,30 @@ body {
     margin-bottom: 10px;
     font-size: 16px;
     color: #FFF;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     outline: none;
     box-shadow: 0px 0px 0px transparent;
 }
 ::-webkit-input-placeholder {
-    color: rgba(255,255,255,0.9) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
-.btn-search {
+.btn-search,
+.btn-search:focus {
     position: absolute;
     right: 20px;
-    top: 20px;
+    bottom: 20px;
     height: 50px;
     width: 50px;
     border-radius: 100%;
     background: #FFF;
-    color: #D27581;
+    color: #2A4961;
     padding-top: 12px;
+    transition: all 0.5s;
+}
+.btn-search:hover {
+    background: #D57680;
+    color: #FFF;
+    -webkit-transform: rotate(360deg);
 }
 .intro {
     background: #FFF;

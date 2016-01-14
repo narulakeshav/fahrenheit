@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name = "viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width">
     <meta charset="UTF-8">
     <!-- Favicon and Title -->
     <title id="page-title">Fahrenheit</title>
@@ -23,16 +24,19 @@
 
     <!-- MY CSS FILE -->
     <link rel="stylesheet" href="css/design.css">
-    
+
     <!-- Google Font(s) Import -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet'>
 </head>
+
 <body>
     <!-- SHOW FOR 4 SECONDS WHILE DATA LOADS -->
     <div class="col-md-12 intro wow slideOutRight" data-wow-delay="3.6s">
         <img src="logo.png" class="intro-img img-responsive wow fadeIn" data-wow-delay="0.1s">
         <p class="intro-text wow fadeIn" data-wow-delay="0.2s">Welcome to Fahrenheit</p>
-        <p class="intro-loading wow flash" data-wow-delay="0.6s" data-wow-duration="4s">Getting Location ...</p>
+        <p class="intro-loading wow fadeIn" data-wow-delay="0.6s">
+            <span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;Getting Location ...
+        </p>
     </div>
 
     <!-- SHOW AFTER 4 SECOND DELAY -->
@@ -60,7 +64,7 @@
 
                 <!-- SHOWS THE 5-DAY FORECAST FOR THE CURRENT CITY -->
                 <div class="card-forecast">
-                    <div class="col-md-3">
+                    <div class="col-xs-3">
                         <p id="tom-day">-</p>
                         <p id="tom-icon">-</p>
                         <p id="tom-forecast-weather">
@@ -68,7 +72,7 @@
                             <span id="f-or-c">F</span>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-xs-3">
                         <p id="tom-1x-day">-</p>
                         <p id="tom-1x-icon">-</p>
                         <p id="tom-forecast-weather">
@@ -76,7 +80,7 @@
                             <span id="f-or-c">F</span>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-xs-3">
                         <p id="tom-2x-day">-</p>
                         <p id="tom-2x-icon">-</p>
                         <p id="tom-forecast-weather">
@@ -84,7 +88,7 @@
                             <span id="f-or-c">F</span>
                         </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-xs-3">
                         <p id="tom-3x-day">-</p>
                         <p id="tom-3x-icon">-</p>
                         <p id="tom-forecast-weather">
@@ -96,9 +100,9 @@
             </div>
         </div>
     </div>
-    
+
     <!-- INFO BUTTON -->
-    <a class="btn btn-search"><span class="fa fa-code"></span></a>
+    <a class="btn btn-search"><span class="fa fa-clone"></span></a>
 
     <!-- JAVASCRIPT CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -108,4 +112,5 @@
     <!-- MY JAVSCRIPT FILE -->
     <script src="js/weather.js"></script>
 </body>
+
 </html>
