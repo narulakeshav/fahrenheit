@@ -314,10 +314,18 @@ url();
 forecast();
 
 // LOADS THE WEATHER EVERY TEN SECONDS
-var reloadCurrent = setInterval(url, 10000);
-var reloadForecast = setInterval(forecast, 10000);
+var reloadCurrent = setInterval(url, 100000);
+var reloadForecast = setInterval(forecast, 100000);
 
 $(document).ready(function() {
+
+    new WOW().init();
+
+    var hideDiv = setTimeout(hideIntro, 4600);
+
+    function hideIntro() {
+        $(".intro").addClass("hideDiv");
+    }
 
     // CONVERTS THE TEMPERATURE FROM CELCIUS TO FAHRENHEIT
     tempInF.onclick = function() {
