@@ -1,8 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300);
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300);
 body {
-    background: linear-gradient(#BCD1E0, #84AECF);
+    /*background: linear-gradient(#BCD1E0, #84AECF);*/
     /*background: linear-gradient(#CFB570, #E0A67B);*/
+    /*background: linear-gradient(#F2727F, #C06C86, #6D5C7E, #325D7F);*/
+    background: linear-gradient(#D67680, #BF7189, #5A4C69, #2A4961);
     height: 100vh;
     background-repeat: repeat;
     background-position: center;
@@ -87,13 +89,31 @@ body {
     text-transform: uppercase;
     font-weight: bolder;
 }
-#today-forecast-icon {
+#today-icon {
     font-size: 25px;
     color: #2196F3;
 }
 #today-forecast-weather {
     color: #2196F3;
     font-size: 20px;
+}
+#tom-forecast-weather {
+    color: #666;
+    font-size: 20px;
+}
+#tom-icon,
+#tom-2x-icon,
+#tom-3x-icon {
+    font-size: 25px;
+    color: #666;
+}
+#tom-day,
+#tom-2x-day,
+#tom-3x-day {
+    font-size: 16px;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: bolder;
 }
 .temp-buttons {
     background: transparent;
