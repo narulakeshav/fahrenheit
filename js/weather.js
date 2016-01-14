@@ -33,7 +33,6 @@ var url = function() {
             var lon = position.coords.longitude;
             // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
             var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-            console.log(url);
             $.getJSON(url, function(data) {
                 // GETS THE KEY VALUE PAIRS FROM THE JSON
                 var city = data.name;
@@ -79,7 +78,6 @@ var forecast = function() {
         var lon = position.coords.longitude;
         // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
         var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-        console.log(url);
 
         // USE GET JSON TO CONVERT THE DATA
         $.getJSON(url, function(data) {
@@ -313,10 +311,6 @@ function buttonOnNoHover() {
 url();
 forecast();
 
-// LOADS THE WEATHER EVERY TEN SECONDS
-var reloadCurrent = setInterval(url, 100000);
-var reloadForecast = setInterval(forecast, 100000);
-
 $(document).ready(function() {
 
     new WOW().init();
@@ -342,4 +336,47 @@ $(document).ready(function() {
             tempUnit.innerHTML = "F";
         }
     };
+
+    $("#input").keypress(function(event){
+        if(event.keyCode == 13){
+            search(document.getElementById("input").value);
+            $("#input").val("");
+        }
+    });
+
+    function search(inputCity) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            // API KEY
+            var APIKey = '79bb2d50ad8139554edb48834a59e016';
+            // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
+            var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + inputCity + '&appid=' + APIKey;
+            console.log(url);
+            
+            $.getJSON(url, function(data) {
+                // GETS THE KEY VALUE PAIRS FROM THE JSON
+                var city = data.name;
+                var country = data.sys.country;
+                var description = data.weather[0].description;
+                var weatherID = data.weather[0].id;
+                temperature.innerHTML = "-";
+                temperature.innerHTML = convertKelvinToF(data.main.temp);
+
+                $("#page-title").html(city + ", " + country + " - Fahrenheit");
+
+                // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
+                if(city.length > 9) { shortenCityName(); }
+                else { appendCountry(city, country); }
+                if(description.length < 6) {
+                    weatherDescription.innerHTML = "It's kinda " + description + "y";
+                }
+                else {
+                    weatherDescription.innerHTML = description.substring(0,1).toUpperCase() + description.substring(1);
+                }
+
+                // CHANGE CARD BACKGROUND
+                changeBackground();
+                weatherIcon.innerHTML = getRightIcon(weatherID);
+            });
+        });
+    }
 });
