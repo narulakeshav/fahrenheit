@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
     function convertKelvinToF(temp) {
-        var KELVIN_FORMULA = 459.67;
+        const KELVIN_FORMULA = 459.67;
         return Math.round((temp * (9 / 5) - KELVIN_FORMULA));
     }
 
