@@ -79,7 +79,12 @@ $(document).ready(function() {
         else if (id >= 801 && id <= 804) { return iconSelector("cloudy"); } // CASE CLOUDY
         else if (id >= 951 && id <= 959) { return iconSelector("cloudy-gusts"); } // CASE WINDY
         else if (id == 962 || id == 902) { return "<i class='wi wi-hurricane'></i>"; } // CASE HURRICANE
-        else { return iconSelector("wi-day-sunny", "wi-night-clear", "wi-cloud"); } // CASE NEUTRAL
+        else { 
+            // CASE NEUTRAL/CASUAL
+            if (dayEveningOrNight() == -1) return "<i class='wi wi-day-sunny'></li>";
+            else if(dayEveningOrNight() == 1) return "<i class='wi wi-night-clear'></li>";
+            else return "<i class='wi wi-cloud'></li>"; 
+        }
     }
 
     // APPENDS THE COUNTRY ABBREVIATION AFTER THE CITY NAME
