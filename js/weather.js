@@ -319,6 +319,8 @@ $(document).ready(function() {
                 var country = data.sys.country;
                 var description = data.weather[0].description;
                 var weatherID = data.weather[0].id;
+                tempUnit.innerHTML = "F";
+                tempInF.innerHTML = "F";
                 temperature.innerHTML = convertKelvinToF(data.main.temp);
                 description = changeDescription(description);
 
@@ -330,8 +332,8 @@ $(document).ready(function() {
                 weatherIcon.innerHTML = getRightIcon(weatherID);
                 
                 // CHANGE CARD BACKGROUND
-                $(".card-view").css("background", "radial-gradient(circle, #A2B3A6, #8FA193)");
-                changeForecastIconColor("#8FA193");
+                $(".card-view").css("background", "radial-gradient(circle, #7FB9C9, #69A3B3)");
+                changeForecastIconColor("#69A3B3");
                 $("#convert-unit").hover(differentLocation, buttonOnNoHover);
                 $("#page-title").html(weatherDescription.innerHTML + " - Fahrenheit");
             });
