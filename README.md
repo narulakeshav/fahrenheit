@@ -15,7 +15,6 @@ I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the wea
         "description":"mist",
         "icon":"50n"
     }],
-    "base":"cmc stations",
     "main":{
         "temp":281.77,
         "pressure":1027,
@@ -32,6 +31,7 @@ function convertKelvinToF(temperature) {
     return Math.round(temperature * (9/5) - KELVIN_FORMULA);
 }
 ```
+And from the weather `ID`, I was able to decide which icon to show. For example, `511 <= id <= 531` would show a rain icon, whereas `701 <= id <= 771` would show a foggy/mist icon.
 # What I Used
 * HTML5/CSS3
 * Bootstrap3
