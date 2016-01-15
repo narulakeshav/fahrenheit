@@ -40,10 +40,10 @@ function convertKelvinToF(temperature) {
 * Openweather API
 
 # Design
-I used `Twitter Bootstrap`, `Animate.css`, `Hover.css`, `Wow.js`, `Font Awesome`, and `WeatherIcons` for design, icons, and animations.
+I used `Twitter Bootstrap`, `Animate.css`, `Hover.css`, `Wow.js`, `Font Awesome`, and `Weather Icons` for design, icons, and animations.
 
 # Why
-This was one of the intermediate Zipline challenge by [FreeCodeCamp](http://freecodecamp.com).
+This was one of the [intermediate Zipline challenge by FreeCodeCamp](http://goo.gl/VcIccD).
 
 # What I learned
 This project taught me more than I ever expected. I was able to work with `JSON` and `API` for the first time. Although I had trouble in the beginning, I used all the resources, such as `StackOverflow` and `FreeCodeCamp`.
