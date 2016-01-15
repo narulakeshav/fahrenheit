@@ -2,6 +2,9 @@ $(document).ready(function() {
     // CALLING THE URL VARIABLE TO GET GEOLOCATION
     url();
 
+    // UPDATED WEATHER EVERY MINUTE
+    var updateTemp = setInterval(url, 10000);
+
     // INITIATING WOWJS FILE
     new WOW().init();
 
@@ -48,113 +51,80 @@ $(document).ready(function() {
         var time = new Date().getHours();
 
         // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
-        if (time >= 0 && time <= 6) {
-            return 1;
-        } else if (time >= 12 && time <= 17) {
-            return 0;
-        } else {
-            return -1;
-        }
+        if (time >= 0 && time <= 6) { return 1; }
+        else if (time >= 12 && time <= 17) { return 0; }
+        else { return -1; }
     }
 
     // CHANGES THE DESCRIPTION IF NECESSARY
     function changeDescription(description) {
-        if (description == "haze") {
-            weatherDescription.innerHTML = "It's kinda hazy";
-        } else if (description.length < 6) {
-            weatherDescription.innerHTML = "It's kinda " + description + "y";
-        } else {
-            weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1);
-        }
+        if (description == "haze") { weatherDescription.innerHTML = "It's kinda hazy"; }
+        else if (description.length < 6) { weatherDescription.innerHTML = "It's kinda " + description + "y"; }
+        else { weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1); }
     }
 
     // GETS THE ICON BASED ON WEATHER ID
     function getRightIcon(id) {
         if (id >= 200 && id <= 232) {
             // CASE THUNDERSTORM
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-thunderstorm'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-thunderstorm'></i>";
-            } else {
-                return "<i class='wi wi-thunderstorm'></i>";
-            }
-        } else if (id >= 300 && id <= 321) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-thunderstorm'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-thunderstorm'></i>"; }
+            else { return "<i class='wi wi-thunderstorm'></i>"; }
+        }
+        else if (id >= 300 && id <= 321) {
             // CASE DRIZZLE
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-sprinkle'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-sprinkle'></i>";
-            } else {
-                return "<i class='wi wi-sprinkle'></i>";
-            }
-        } else if (id >= 500 && id <= 504) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sprinkle'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-sprinkle'></i>"; }
+            else { return "<i class='wi wi-sprinkle'></i>"; }
+        }
+        else if (id >= 500 && id <= 504) {
             // CASE SHOWERS
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-showers'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-showers'></i>";
-            } else {
-                return "<i class='wi wi-showers'></i>";
-            }
-        } else if (id >= 511 && id <= 531) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-showers'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-showers'></i>"; }
+            else { return "<i class='wi wi-showers'></i>"; }
+        }
+        else if (id >= 511 && id <= 531) {
             // CASE RAIN
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-rain'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-rain'></i>";
-            } else {
-                return "<i class='wi wi-rain'></i>";
-            }
-        } else if (id >= 600 && id <= 622) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-rain'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-rain'></i>"; }
+            else { return "<i class='wi wi-rain'></i>"; }
+        }
+        else if (id >= 600 && id <= 622) {
             // CASE SNOW
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-snow'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-snow'></i>";
-            } else {
-                return "<i class='wi wi-snow'></i>";
-            }
-        } else if (id >= 701 && id <= 771) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-snow'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-snow'></i>"; }
+            else { return "<i class='wi wi-snow'></i>"; }
+        }
+        else if (id >= 701 && id <= 771) {
             // CASE FOG/MIST
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-fog'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-fog'></i>";
-            } else {
-                return "<i class='wi wi-fog'></i>";
-            }
-        } else if (id == 781 || id >= 900 && id <= 901) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-fog'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-fog'></i>"; }
+            else { return "<i class='wi wi-fog'></i>"; }
+        }
+        else if (id == 781 || id >= 900 && id <= 901) {
             // CASE TORNADO
             return "<i class='wi wi-tornado'></i>";
-        } else if (id >= 801 && id <= 804) {
+        }
+        else if (id >= 801 && id <= 804) {
             // CASE CLOUDY
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-cloudy'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-cloudy'></i>";
-            } else {
-                return "<i class='wi wi-cloud'></i>";
-            }
-        } else if (id >= 951 && id <= 959) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-cloudy'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-cloudy'></i>"; }
+            else { return "<i class='wi wi-cloud'></i>"; }
+        }
+        else if (id >= 951 && id <= 959) {
             // CASE WINDY
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-cloudy-gusts'></i>";
-            } else if (dayEveningOrNight() == 1) {
-                return "<i class='wi wi-night-alt-cloudy-gusts'></i>";
-            } else {
-                return "<i class='wi wi-strong-wind'></i>";
-            }
-        } else if (id == 962 || id == 902) {
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-cloudy-gusts'></i>"; }
+            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-cloudy-gusts'></i>"; }
+            else { return "<i class='wi wi-strong-wind'></i>"; }
+        }
+        else if (id == 962 || id == 902) {
             // CASE HURRICANE
             return "<i class='wi wi-hurricane'></i>";
-        } else {
+        }
+        else {
             // IT'S JUST SUNNY
-            if (dayEveningOrNight() == -1) {
-                return "<i class='wi wi-day-sunny'></i>";
-            } else {
-                return "<i class='wi wi-night-alt-cloudy-gusts'></i>";
-            }
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sunny'></i>"; }
+            else { return "<i class='wi wi-night-alt-cloudy-gusts'></i>"; }
         }
     }
 
@@ -170,27 +140,27 @@ $(document).ready(function() {
             // DAY TIME (5:00 AM)
             $(".card-view").css("background", "radial-gradient(circle, #FCD057, #FD8934)");
             $("#convert-unit").hover(dayTimeHover, buttonOnNoHover);
-            $("#tom-icon").css("color", "#FCD057");
-            $("#tom-1x-icon").css("color", "#FCD057");
-            $("#tom-2x-icon").css("color", "#FCD057");
-            $("#tom-3x-icon").css("color", "#FCD057");
-        } else if (time == 0) {
+            changeForecastIconColor("#FCD057");
+        }
+        else if (time == 0) {
             // EVENING TIME (5:00 PM)
             $(".card-view").css("background", "radial-gradient(circle, #55B1FA, #2196F3)");
             $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
-            $("#tom-icon").css("color", "#55B1FA");
-            $("#tom-1x-icon").css("color", "#55B1FA");
-            $("#tom-2x-icon").css("color", "#55B1FA");
-            $("#tom-3x-icon").css("color", "#55B1FA");
-        } else {
+            changeForecastIconColor("#55B1FA");
+        }
+        else {
             // NIGHT TIME (6:00 PM & BEYOND) (CHANGE THE ACTUAL COLORS)
             $(".card-view").css("background", "radial-gradient(circle, #34495E, #2C3E50)");
             $("#convert-unit").hover(nightTimeHover, buttonOnNoHover);
-            $("#tom-icon").css("color", "34495E");
-            $("#tom-1x-icon").css("color", "#34495E");
-            $("#tom-2x-icon").css("color", "#34495E");
-            $("#tom-3x-icon").css("color", "#34495E");
+            changeForecastIconColor("#34495E");
         }
+    }
+
+    function changeForecastIconColor(color) {
+        $("#tom-icon").css("color", color);
+        $("#tom-1x-icon").css("color", color);
+        $("#tom-2x-icon").css("color", color);
+        $("#tom-3x-icon").css("color", color);
     }
 
     // FOR DAY TIME
@@ -347,19 +317,15 @@ $(document).ready(function() {
                 description = changeDescription(description);
 
                 // MANIPULATES THE ELEMENTS TO FIT THE SIZE AND CONCATENATE THEM
-                if (city == "Taft Mosswood") {
-                    cityName.innerHTML = "Stockton" + ", " + country;
-                } 
+                if (city == "Taft Mosswood") { cityName.innerHTML = "Stockton" + ", " + country; } 
                 else { appendCountry(city, country); }
 
                 // CHANGING THE ICONS
                 weatherIcon.innerHTML = getRightIcon(weatherID);
+                
                 // CHANGE CARD BACKGROUND
                 $(".card-view").css("background", "radial-gradient(circle, #A2B3A6, #8FA193)");
-                $("#tom-icon").css("color", "#8FA193");
-                $("#tom-1x-icon").css("color", "#8FA193");
-                $("#tom-2x-icon").css("color", "#8FA193");
-                $("#tom-3x-icon").css("color", "#8FA193");
+                changeForecastIconColor("#8FA193");
                 $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
                 $("#page-title").html(weatherDescription.innerHTML + " - Fahrenheit");
             });
