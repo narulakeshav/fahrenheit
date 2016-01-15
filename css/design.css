@@ -32,11 +32,13 @@ a:hover {
     background: radial-gradient(circle, #55B1FA, #2196F3);
     background-repeat: repeat;
     background-position: center;
-    padding: 20px 20px;
+    padding: 10px 20px;
     height: 325px;
+    z-index: 10;
 }
 .card-forecast {
     padding: 10px 20px 130px;
+    height: 150px;
 }
 .form-control,
 .form-control:focus {
@@ -65,6 +67,8 @@ a:hover {
     bottom: 0;
     transition: all 0.5s;
     cursor: pointer;
+    position: fixed;
+    z-index: 1;
 }
 .information:hover {
     background: rgba(0,0,0,0.3);
@@ -83,7 +87,6 @@ a:hover {
     margin: 0;
     padding: 0;
     float: right;
-    margin-top: -30px;
 }
 .temp-butt,
 .temp-butt:focus {
@@ -91,10 +94,10 @@ a:hover {
     height: 40px;
     border-radius: 100%;
     border: none;
+    margin: 0;
     background: rgba(0, 0, 0, 0.15);
     color: #FFF;
     font-size: 16px;
-    margin-top: 25px;
     padding-top: 4px;
     font-weight: bolder;
     transition: all .5s;
@@ -292,5 +295,62 @@ a:hover {
     }
     .intro-text {
         font-size: 28px;
+    }
+    .card {
+        height: 415px;
+    }
+    .card-view {
+        height: 280px;
+    }
+    #weather-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+        line-height: 70px;
+    }
+    #temperature {
+        padding-top: 10px;
+        font-size: 60px;
+    }
+    .temp {
+        padding-top: 10px;
+        font-size: 50px;
+        line-height: 20px;
+    }
+    #temp-type {
+        font-size: 25px;
+        margin-top: 20px;
+        line-height: 30px;
+    }
+    #city-name {
+        font-size: 25px;
+        padding-top: 10px;
+    }
+    #weather-info {
+        font-size: 20px;
+    }
+    #tom-icon,
+    #tom-1x-icon,
+    #tom-2x-icon,
+    #tom-3x-icon {
+        font-size: 30px;
+    }
+    #tom-day,
+    #tom-1x-day,
+    #tom-2x-day,
+    #tom-3x-day {
+        font-size: 12px;
+    }
+    .temp-butt,
+    .temp-butt:focus {
+        padding-top: 0px;
+    }
+    .btn-social,
+    .btn-social:focus {
+        background: #F0F0F0;
+        padding: 8px 10px;
+        border-radius: 2px;
+        color: #888;
+        margin-right: 3px;
+        font-size: 12px;
     }
 }
