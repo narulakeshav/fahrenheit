@@ -282,7 +282,10 @@ a:hover {
     }
     .information {
         padding: 8px;
-        width: 100%;
+        right: -190px;
+    }
+    .information:hover {
+        right: 20px;
     }
     .modal-dialog {
         width: 94%;
