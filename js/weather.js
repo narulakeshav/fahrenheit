@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    "use strict";
     // CALLING THE URL VARIABLE TO GET GEOLOCATION
     url();
 
@@ -39,8 +40,8 @@ $(document).ready(function() {
 
     // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
     function convertKelvinToF(temp) {
-        const KELVIN_FORMULA = 459.67;
-        return Math.round((temp * (9 / 5) - KELVIN_FORMULA));
+        var KELVIN_FORMULA = 459.67;
+        return Math.round(temp * (9/5) - KELVIN_FORMULA);
     }
 
     // DETERMINES WHETHER IT'S A DAY, EVENING, OR NIGHT TIME
@@ -62,9 +63,9 @@ $(document).ready(function() {
 
     // GENERATES THE ICON FROM THE ICON KEYWORD PASSED BY 'GETRIGHTICON' FUNCTION
     function iconSelector(iconName) {
-        if (dayEveningOrNight() == -1) return "<i class=\"wi wi-day-" + iconName + "\"></i>";
-        else if(dayEveningOrNight() == 1) return "<i class=\"wi wi-alt-night" + iconName + "\"></i>";
-        else return "<i class=\"wi wi-" + iconName + "\"></i>";
+        if (dayEveningOrNight() == -1) { return "<i class=\"wi wi-day-" + iconName + "\"></i>"; }
+        else if(dayEveningOrNight() == 1) { return "<i class=\"wi wi-alt-night" + iconName + "\"></i>"; }
+        else { return "<i class=\"wi wi-" + iconName + "\"></i>"; }
     }
 
     // GETS THE ICON BASED ON WEATHER ID
@@ -81,9 +82,9 @@ $(document).ready(function() {
         else if (id == 962 || id == 902) { return "<i class='wi wi-hurricane'></i>"; } // CASE HURRICANE
         else { 
             // CASE NEUTRAL/CASUAL
-            if (dayEveningOrNight() == -1) return "<i class='wi wi-day-sunny'></li>";
-            else if(dayEveningOrNight() == 1) return "<i class='wi wi-night-clear'></li>";
-            else return "<i class='wi wi-cloud'></li>"; 
+            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sunny'></li>"; }
+            else if(dayEveningOrNight() == 1) { return "<i class='wi wi-night-clear'></li>"; }
+            else return { "<i class='wi wi-cloud'></li>"; }
         }
     }
 
@@ -220,18 +221,21 @@ $(document).ready(function() {
     // GET THE CURRENT CITY'S FORECAST FOR 3 DAYS
     function forecast(lon, lat, APIKey) {
         var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
-        console.log(url);
         $.getJSON(url, function(data) {
 
             var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
             // GETS THE FORECAST DATA WHICH GETS THE ICON, DAY OF WEEK, TEMPERATURE, AND ID
             function getData(tempVar, listNum, dateVar, iconVar) {
-                var id = data.list[listNum].weather[0].id; // gets the id of weather
-                var date = data.list[listNum].dt_txt.substring(0,11); // gets the date in 2016-01-15 format
+                // GETS WEATHER ID FROM JSON
+                var id = data.list[listNum].weather[0].id;
+                // GETS THE DATE IN 01-15-2016 FORMAT & SPLITS THEM AT THE DASHES
+                var date = data.list[listNum].dt_txt.substring(0,11);
                 date = date.split("-");
+                // SINCE SAFARI SHOWS UNDEFINED ON DATES, WE'RE GOING TO USE 01,15,2016 FORMAT TO DISPLAY THE DAY
                 var dayOfWeek = new Date(date[0], date[1] - 1, date[2]);
                 dayOfWeek = weekday[dayOfWeek.getDay()];
+                // ASSIGN THE ID'S INNER HTML TO DATA
                 tempVar.innerHTML = convertKelvinToF(data.list[listNum].main.temp);
                 dateVar.innerHTML = dayOfWeek;
                 iconVar.innerHTML = getRightIcon(id);
