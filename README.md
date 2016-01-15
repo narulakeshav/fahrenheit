@@ -3,7 +3,7 @@ Fahrenheit is a weather application that allows you to view the weather of your 
 <br><br>
 You can view the application on my website here: [http://narulakeshav.com/app/fahrenheit](http://narulakeshav.com/app/fahrenheit)
 <br><br>
-![Screenshot](http://i.imgur.com/Oy1X2cu.jpg)
+![Screenshot](http://i.imgur.com/4P6ZZYr.jpg)
 
 # How it Works
 I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the weather of user's current location. The data was in `JSON` format, which I parsed using the `$.getJSON()` method by jQuery. Here's an example:
