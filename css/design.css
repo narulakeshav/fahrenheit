@@ -133,7 +133,7 @@ a:hover {
     color: #FFF;
     line-height: 20px;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 26px;
     margin-bottom: 25px;
 }
 .temp {
@@ -180,6 +180,7 @@ a:hover {
 #tom-2x-icon,
 #tom-3x-icon {
     font-size: 35px;
+    margin-top: 6px;
 }
 #tom-day,
 #tom-1x-day,
@@ -344,6 +345,7 @@ a:hover {
     .temp-butt,
     .temp-butt:focus {
         padding-top: 0px;
+        background: rgba(0, 0, 0, 0.15);
     }
     .btn-social,
     .btn-social:focus {
@@ -356,9 +358,6 @@ a:hover {
     }
 }
 /* EDIT HOVER CSS PROPERTIES */
-.hvr-radial-out:before {
-    background: #FFF;
-}
 .hvr-sweep-to-right:before {
     background: rgba(0,0,0,0.15);
 }
