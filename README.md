@@ -6,7 +6,7 @@ You can view the application on my website here: [http://narulakeshav.com/app/fa
 ![Screenshot](http://goo.gl/0A7jI2)
 
 # How it Works
-I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the weather of user's current location. The data was in `JSON` format, which I parsed using the `$.getJSON(url, function(data))` by jQuery. Here's an example:
+I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the weather of user's current location. The data was in `JSON` format, which I parsed using the `$.getJSON()` method by jQuery. Here's an example:
 ```
 {
     "coord":{
@@ -32,7 +32,7 @@ I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the wea
 From that, I got the temperature (`data.main.temp`) which was given in `Kelvin`, which I converted to `Fahrenheit`:
 ```
 function convertKelvinToF(temperature) {
-    var KELVIN_FORMULA = 459.67;
-    return Math.round((temp * (9 / 5) - KELVIN_FORMULA));
+    const KELVIN_FORMULA = 459.67;
+    return Math.round((temperature * (9 / 5) - KELVIN_FORMULA));
 }
 ```
