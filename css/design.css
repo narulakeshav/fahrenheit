@@ -90,6 +90,8 @@ a:hover {
     text-align: right;
     border: none;
     margin: 0;
+    margin-right: -22px;
+    margin-top: 4px;
     padding: 0 18px;
     background: rgba(0, 0, 0, 0.15);
     color: #FFF;
@@ -235,7 +237,8 @@ a:hover {
     transition: all .5s;
 }
 .modal-close {
-    font-size: 20px;
+    font-size: 30px;
+    line-height: 0;
 }
 .btn-social,
 .btn-social:focus {
@@ -348,4 +351,11 @@ a:hover {
         margin-right: 3px;
         font-size: 12px;
     }
+}
+/* EDIT HOVER CSS PROPERTIES */
+.hvr-radial-out:before {
+    background: #FFF;
+}
+.hvr-sweep-to-right:before {
+    background: rgba(0,0,0,0.15);
 }
