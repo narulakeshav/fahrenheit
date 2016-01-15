@@ -33,6 +33,6 @@ From that, I got the temperature (`data.main.temp`) which was given in `Kelvin`,
 ```
 function convertKelvinToF(temperature) {
     const KELVIN_FORMULA = 459.67;
-    return Math.round((temperature * (9 / 5) - KELVIN_FORMULA));
+    return Math.round(temperature * (9/5) - KELVIN_FORMULA);
 }
 ```
