@@ -63,12 +63,11 @@ a:hover {
     background: rgba(0,0,0,0.1);
     padding: 10px;
     color: #FFF;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     transition: all 0.5s;
     cursor: pointer;
-    position: fixed;
-    z-index: 1;
 }
 .information:hover {
     background: rgba(0,0,0,0.3);
@@ -82,23 +81,19 @@ a:hover {
 }
 
 /* BUTTON PROPERTY CSS */
-.temp-buttons {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-    float: right;
-}
 .temp-butt,
 .temp-butt:focus {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
+    float: right;
+    text-align: right;
     border: none;
     margin: 0;
+    padding: 0 19px;
     background: rgba(0, 0, 0, 0.15);
     color: #FFF;
     font-size: 16px;
-    padding-top: 4px;
     font-weight: bolder;
     transition: all .5s;
     outline: none;
@@ -112,7 +107,7 @@ a:hover {
 .btn-information:focus {
     color: rgba(255,255,255,0.8);
     transition: all 0.5s;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     text-align: center;
 }
@@ -136,7 +131,7 @@ a:hover {
     color: #FFF;
     line-height: 20px;
     text-align: left;
-    margin-top: -20px;
+    margin-top: 20px;
     margin-bottom: 25px;
 }
 .temp {
