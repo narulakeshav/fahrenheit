@@ -2,9 +2,6 @@ $(document).ready(function() {
     // CALLING THE URL VARIABLE TO GET GEOLOCATION
     url();
 
-    // UPDATED WEATHER EVERY MINUTE
-    var updateTemp = setInterval(url, 10000);
-
     // INITIATING WOWJS FILE
     new WOW().init();
 
@@ -51,8 +48,8 @@ $(document).ready(function() {
         var time = new Date().getHours();
 
         // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
-        if (time >= 0 && time <= 6) { return 1; }
-        else if (time >= 12 && time <= 17) { return 0; }
+        if (time >= 18 && time <= 24 || time <= 6) { return 1; }
+        else if (time >= 12 && time <= 19) { return 0; }
         else { return -1; }
     }
 
@@ -140,7 +137,7 @@ $(document).ready(function() {
             // DAY TIME (5:00 AM)
             $(".card-view").css("background", "radial-gradient(circle, #FCD057, #FD8934)");
             $("#convert-unit").hover(dayTimeHover, buttonOnNoHover);
-            changeForecastIconColor("#FCD057");
+            changeForecastIconColor("#FD8934");
         }
         else if (time == 0) {
             // EVENING TIME (5:00 PM)
@@ -326,7 +323,7 @@ $(document).ready(function() {
                 // CHANGE CARD BACKGROUND
                 $(".card-view").css("background", "radial-gradient(circle, #A2B3A6, #8FA193)");
                 changeForecastIconColor("#8FA193");
-                $("#convert-unit").hover(eveningTimeHover, buttonOnNoHover);
+                $("#convert-unit").hover(differentLocation, buttonOnNoHover);
                 $("#page-title").html(weatherDescription.innerHTML + " - Fahrenheit");
             });
         });
