@@ -84,7 +84,7 @@ $(document).ready(function() {
             // CASE NEUTRAL/CASUAL
             if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sunny'></li>"; }
             else if(dayEveningOrNight() == 1) { return "<i class='wi wi-night-clear'></li>"; }
-            else return { "<i class='wi wi-cloud'></li>"; }
+            else { return "<i class='wi wi-cloud'></li>"; }
         }
     }
 
