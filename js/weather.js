@@ -5,21 +5,7 @@ $(document).ready(function() {
     // INITIATING WOWJS FILE
     new WOW().init();
 
-    // HIDING THE INTRO DIV IN 4.6 SECONDS
-    var hideDiv = setTimeout(hideIntro, 4600);
-    function hideIntro() {
-        $(".intro").addClass("hideDiv");
-    }
-
-    // GETTING HTML REFERENCES
-    var cityName = document.getElementById("city-name");
-    var temperature = document.getElementById("temperature");
-    var weatherDescription = document.getElementById("weather-info");
-    var weatherIcon = document.getElementById("weather-icon");
-    var tempInF = document.getElementById("convert-unit");
-    var tempUnit = document.getElementById("temp-type");
-
-    // FOR THE TEMPERATURE FORECAST
+    // TEMPERATURE FORECAST
     var tempForecast0 = document.getElementById("tom-forecast");
     var tempForecast1 = document.getElementById("tom-1x-forecast");
     var tempForecast2 = document.getElementById("tom-2x-forecast");
@@ -36,6 +22,20 @@ $(document).ready(function() {
     var iconForecast1 = document.getElementById("tom-1x-icon");
     var iconForecast2 = document.getElementById("tom-2x-icon");
     var iconForecast3 = document.getElementById("tom-3x-icon");
+
+    // GETTING HTML REFERENCES
+    var cityName = document.getElementById("city-name");
+    var temperature = document.getElementById("temperature");
+    var weatherDescription = document.getElementById("weather-info");
+    var weatherIcon = document.getElementById("weather-icon");
+    var tempInF = document.getElementById("convert-unit");
+    var tempUnit = document.getElementById("temp-type");
+
+    // HIDING THE INTRO DIV IN 4.6 SECONDS
+    var hideDiv = setTimeout(hideIntro, 4600);
+    function hideIntro() {
+        $(".intro").addClass("hideDiv");
+    }
 
     // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
     function convertKelvinToF(temp) {
@@ -60,69 +60,26 @@ $(document).ready(function() {
         else { weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1); }
     }
 
+    // GENERATES THE ICON FROM THE ICON KEYWORD PASSED BY 'GETRIGHTICON' FUNCTION
+    function iconSelector(iconName) {
+        if (dayEveningOrNight() == -1) return "<i class=\"wi wi-day-" + iconName + "\"></i>";
+        else if(dayEveningOrNight() == 1) return "<i class=\"wi wi-alt-night" + iconName + "\"></i>";
+        else return "<i class=\"wi wi-" + iconName + "\"></i>";
+    }
+
     // GETS THE ICON BASED ON WEATHER ID
     function getRightIcon(id) {
-        if (id >= 200 && id <= 232) {
-            // CASE THUNDERSTORM
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-thunderstorm'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-thunderstorm'></i>"; }
-            else { return "<i class='wi wi-thunderstorm'></i>"; }
-        }
-        else if (id >= 300 && id <= 321) {
-            // CASE DRIZZLE
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sprinkle'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-sprinkle'></i>"; }
-            else { return "<i class='wi wi-sprinkle'></i>"; }
-        }
-        else if (id >= 500 && id <= 504) {
-            // CASE SHOWERS
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-showers'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-showers'></i>"; }
-            else { return "<i class='wi wi-showers'></i>"; }
-        }
-        else if (id >= 511 && id <= 531) {
-            // CASE RAIN
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-rain'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-rain'></i>"; }
-            else { return "<i class='wi wi-rain'></i>"; }
-        }
-        else if (id >= 600 && id <= 622) {
-            // CASE SNOW
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-snow'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-snow'></i>"; }
-            else { return "<i class='wi wi-snow'></i>"; }
-        }
-        else if (id >= 701 && id <= 771) {
-            // CASE FOG/MIST
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-fog'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-fog'></i>"; }
-            else { return "<i class='wi wi-fog'></i>"; }
-        }
-        else if (id == 781 || id >= 900 && id <= 901) {
-            // CASE TORNADO
-            return "<i class='wi wi-tornado'></i>";
-        }
-        else if (id >= 801 && id <= 804) {
-            // CASE CLOUDY
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-cloudy'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-cloudy'></i>"; }
-            else { return "<i class='wi wi-cloud'></i>"; }
-        }
-        else if (id >= 951 && id <= 959) {
-            // CASE WINDY
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-cloudy-gusts'></i>"; }
-            else if (dayEveningOrNight() == 1) { return "<i class='wi wi-night-alt-cloudy-gusts'></i>"; }
-            else { return "<i class='wi wi-strong-wind'></i>"; }
-        }
-        else if (id == 962 || id == 902) {
-            // CASE HURRICANE
-            return "<i class='wi wi-hurricane'></i>";
-        }
-        else {
-            // IT'S JUST SUNNY
-            if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sunny'></i>"; }
-            else { return "<i class='wi wi-night-alt-cloudy-gusts'></i>"; }
-        }
+        if(id >= 200 && id <= 232) { return iconSelector("thunderstorm"); } //CASE THUNDERSTORM
+        else if (id >= 300 && id <= 321) { return iconSelector("sprinkle"); } // CASE DRIZZLE
+        else if (id >= 500 && id <= 504) { return iconSelector("showers"); } // CASE SHOWERS
+        else if (id >= 511 && id <= 531) { return iconSelector("rain"); } // CASE RAIN
+        else if (id >= 600 && id <= 622) { return iconSelector("snow"); } // CASE SNOW
+        else if (id >= 701 && id <= 771) { return iconSelector("fog"); } // CASE FOG/MIST
+        else if (id == 781 || id >= 900 && id <= 901) { return "<i class='wi wi-tornado'></i>"; } // CASE TORNADO
+        else if (id >= 801 && id <= 804) { return iconSelector("cloudy"); } // CASE CLOUDY
+        else if (id >= 951 && id <= 959) { return iconSelector("cloudy-gusts"); } // CASE WINDY
+        else if (id == 962 || id == 902) { return "<i class='wi wi-hurricane'></i>"; } // CASE HURRICANE
+        else { return iconSelector("wi-day-sunny", "wi-night-clear", "wi-cloud"); } // CASE NEUTRAL
     }
 
     // APPENDS THE COUNTRY ABBREVIATION AFTER THE CITY NAME
@@ -174,6 +131,8 @@ $(document).ready(function() {
     function nightTimeHover() {
         $("#convert-unit").css("color", "#2C3E50");
     }
+
+    // COLOR IF ACCESSING A DIFFERENT CITY
     function differentLocation() {
         $("#convert-unit").css("color", "#8FA193");
     }
