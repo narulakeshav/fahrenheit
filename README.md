@@ -40,7 +40,7 @@ And from the weather `ID`, I was able to decide which icon to show. For example,
 * Openweather API
 
 # Design
-I used `Twitter Bootstrap`, `Animate.css`, `Hover.css`, `Wow.js`, `Font Awesome`, and `Weather Icons` for design, icons, and animations.
+I used `Twitter Bootstrap`, `Animate.css`, `Hover.css`, `Wow.js`, `Font Awesome`, and `Weather Icons` for design, icons, and animations. Designing this was just as fun as challenging. I wanted something pleasing to the eyes, but with good colors. It took me around 2 days to figure out the color scheme for the entire project. I love designing, but I wish it was easier.
 
 # Can you contribute?
 Of course. All the pull request are welcomed (that will help me a ton) and will be reviewed. If I like it, it's going on the website with your name and Twitter/LinkedIn handle. 
