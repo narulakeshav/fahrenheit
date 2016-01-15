@@ -168,6 +168,7 @@ a:hover {
     line-height: 0;
     font-weight: bolder;
     text-align: left;
+    padding-top: 8px;
 }
 /* FORECAST */
 #tom-forecast-weather {
