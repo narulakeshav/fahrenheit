@@ -57,6 +57,18 @@ a:hover {
 .hideDiv {
     display: none;
 }
+.information {
+    background: rgba(0,0,0,0.1);
+    padding: 10px;
+    color: #FFF;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.information:hover {
+    background: rgba(0,0,0,0.3);
+}
 
 /* IMG PROPERTY CSS */
 .intro-img {
@@ -93,24 +105,16 @@ a:hover {
     background: #FFF;
     color: #2196F3;
 }
-.btn-info,
-.btn-info:focus {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    background: #FFF;
-    color: #A373CC;
-    padding-top: 14px;
+.btn-information,
+.btn-information:focus {
+    color: rgba(255,255,255,0.8);
     transition: all 0.5s;
+    font-size: 16px;
     border: none;
+    text-align: center;
 }
-.btn-info:hover {
-    background: #55B1FA;
+.btn-information:hover {
     color: #FFF;
-    -webkit-transform: rotate(360deg);
 }
 
 /* TEXT PROPERTY CSS */
@@ -187,6 +191,7 @@ a:hover {
 .intro {
     background: #FFF;
     height: 100vh;
+    width: 100vw;
     z-index: 100;
     position: absolute;
     top: 0;
@@ -202,7 +207,7 @@ a:hover {
     text-align: center;
     font-size: 18px;
 }
-/* MODAL CSS */
+
 /* MODAL POPUP CSS */
 .modal-dialog {
     padding-top: 100px;
@@ -263,4 +268,28 @@ a:hover {
 .link:hover {
     color: #A766DE;
     border-color: #A766DE;
+}
+
+/* MEDIA QUERY CSS */
+@media (max-width: 768px) {
+    body {
+        padding-top: 20px;
+    }
+    #weather-icon {
+        margin-top: 10px;
+    }
+    .information {
+        padding: 8px;
+        width: 100%;
+    }
+    .modal-dialog {
+        width: 94%;
+    }
+    .intro-img {
+        width: 100px;
+        height: auto;
+    }
+    .intro-text {
+        font-size: 28px;
+    }
 }
