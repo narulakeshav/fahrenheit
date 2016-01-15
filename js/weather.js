@@ -48,8 +48,8 @@ $(document).ready(function() {
         var time = new Date().getHours();
 
         // RETURNS -1 FOR DAYTIME, 0 FOR EVENING, & 1 FOR NIGHT TIME
-        if (time >= 18 && time <= 24 || time <= 6) { return 1; }
-        else if (time >= 12 && time <= 19) { return 0; }
+        if (time >= 19 && time < 24 || time < 6) { return 1; }
+        else if (time >= 14 && time < 19) { return 0; }
         else { return -1; }
     }
 
