@@ -12,7 +12,7 @@
     <meta property="og:title" content="Fahrenheit" />
     <meta property="og:description" content="Find your current weather wherever you are." />
     <meta property="og:site_name" content="NarulaKeshav" />
-    <meta property="og:url" content="http://narulakeshav.com/projects/fahrenheit" />
+    <meta property="og:url" content="http://narulakeshav.com/app/fahrenheit" />
     <meta property="og:image" content="http://goo.gl/zueMjl" />
 
     <!-- CSS CDNs -->
@@ -50,12 +50,9 @@
 
                 <!-- SHOWS THE CURRENT WEATHER FOR THE CURRENT CITY -->
                 <div class="card-view">
-
-                    <!-- BUTTON TO CONVERT THE TEMPERATURE UNITS FROM F TO C -->
-                    <div class="col-md-1 temp-buttons">
-                        <button class="temp-butt" id="convert-unit">F</button>
-                    </div>
                     <div class="col-md-12">
+                        <!-- BUTTON TO CONVERT THE TEMPERATURE UNITS FROM F TO C -->
+                        <button class="temp-butt" id="convert-unit">F</button>
                         <!-- CURRENT WEATHER DISPLAYED HERE WITH CITY NAME -->
                         <p id="weather-icon">-</p>
                         <p id="weather-info">-</p>
@@ -104,13 +101,10 @@
     </div>
 
     <!-- INFORMATION ON BUTTON --> 
-    <div class="col-md-12 information" align="center" data-toggle="modal" data-target="#myModal">
-        <!-- BUTTON INFO -->
-        <div class="col-md-4 col-md-offset-4">
-            <a class="btn btn-information">
-                <span class="fa fa-clone"></span>&nbsp;&nbsp;view repository and information
-            </a>
-        </div>
+    <div class="information" data-toggle="modal" data-target="#myModal">
+        <a class="btn btn-information">
+            <span class="fa fa-clone"></span>&nbsp;&nbsp;about fahrenheit and repo
+        </a>
     </div>
     <!-- Button -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
