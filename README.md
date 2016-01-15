@@ -42,10 +42,10 @@ And from the weather `ID`, I was able to decide which icon to show. For example,
 # Design
 I used `Twitter Bootstrap`, `Animate.css`, `Hover.css`, `Wow.js`, `Font Awesome`, and `Weather Icons` for design, icons, and animations.
 
-# Why
-This was one of the [intermediate Zipline challenge by FreeCodeCamp](http://goo.gl/VcIccD).
+# Can you contribute?
+Of course. All the pull request are welcomed (that will help me a ton) and will be reviewed. If I like it, it's going on the website with your name and Twitter/LinkedIn handle. 
 
 # What I learned
-This project taught me more than I ever expected. I was able to work with `JSON` and `API` for the first time. Although I had trouble in the beginning, I used all the resources, such as `StackOverflow` and `FreeCodeCamp`.
+This was one of the [intermediate Zipline challenge by FreeCodeCamp](http://goo.gl/VcIccD). This project taught me more than I ever expected. I was able to work with `JSON` and `API` for the first time. Although I had trouble in the beginning, I used all the resources, such as `StackOverflow` and `FreeCodeCamp`.
 <br><br>
 I didn't have to do all the things that I did, but I did it in order to learn more and understanding how everything works. This was so hard, but I'm more than happy with the final result.
