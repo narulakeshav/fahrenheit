@@ -256,19 +256,24 @@ $(document).ready(function() {
     // GET THE CURRENT CITY'S FORECAST FOR 3 DAYS
     function forecast(lon, lat, APIKey) {
         var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+        console.log(url);
         $.getJSON(url, function(data) {
 
             var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
             var tom_one_ID = data.list[5].weather[0].id;
-            var tom_one_Day = new Date(data.list[5].dt_txt);
+            var formatDate = data.list[5].dt_txt.substring(0,11);
+            formatDate = formatDate.split("-");
+            var tom_one_Day = new Date(formatDate[0], formatDate[1] - 1, formatDate[2]);
             tom_one_Day = weekday[tom_one_Day.getDay()];
             tempForecast0.innerHTML = convertKelvinToF(data.list[5].main.temp);
             dayForecast0.innerHTML = tom_one_Day;
             iconForecast0.innerHTML = getRightIcon(tom_one_ID);
 
             var tomID = data.list[13].weather[0].id;
-            var tomDay = new Date(data.list[13].dt_txt);
+            var formatDateOne = data.list[13].dt_txt.substring(0,11);
+            formatDateOne = formatDateOne.split("-");
+            var tomDay = new Date(formatDateOne[0], formatDateOne[1] - 1, formatDateOne[2]);
             tomDay = weekday[tomDay.getDay()];
             tempForecast1.innerHTML = convertKelvinToF(data.list[13].main.temp);
             dayForecast1.innerHTML = tomDay;
@@ -276,7 +281,9 @@ $(document).ready(function() {
 
             // FORECAST FOR DAY AFTER TOMORROW
             var tom_two_ID = data.list[21].weather[0].id;
-            var tom_two_Day = new Date(data.list[21].dt_txt);
+            var formatDateTwo = data.list[21].dt_txt.substring(0,11);
+            formatDateTwo = formatDateTwo.split("-");
+            var tom_two_Day = new Date(formatDateTwo[0], formatDateTwo[1] - 1, formatDateTwo[2]);
             tom_two_Day = weekday[tom_two_Day.getDay()];
             tempForecast2.innerHTML = convertKelvinToF(data.list[21].main.temp);
             dayForecast2.innerHTML = tom_two_Day;
@@ -284,7 +291,9 @@ $(document).ready(function() {
 
             // FORECAST FOR DAY AFTER TOMORROW'S TOMORROW
             var tom_three_ID = data.list[29].weather[0].id;
-            var tom_three_Day = new Date(data.list[29].dt_txt);
+            var formatDateThree = data.list[29].dt_txt.substring(0,11);
+            formatDateThree = formatDateThree.split("-");
+            var tom_three_Day = new Date(formatDateThree[0], formatDateThree[1] - 1, formatDateThree[2]);
             tom_three_Day = weekday[tom_three_Day.getDay()];
             tempForecast3.innerHTML = convertKelvinToF(data.list[29].main.temp);
             dayForecast3.innerHTML = tom_three_Day;
