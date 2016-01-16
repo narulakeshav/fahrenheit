@@ -54,32 +54,28 @@ $(document).ready(function() {
         else { return -1; }
     }
 
-    // CHANGES THE DESCRIPTION IF NECESSARY
-    function changeDescription(description) {
-        if (description == "haze") { weatherDescription.innerHTML = "It's kinda hazy"; }
-        else if (description.length < 6) { weatherDescription.innerHTML = "It's kinda " + description + "y"; }
-        else { weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1); }
-    }
-
     // GENERATES THE ICON FROM THE ICON KEYWORD PASSED BY 'GETRIGHTICON' FUNCTION
     function iconSelector(iconName) {
-        if (dayEveningOrNight() == -1) { return "<i class=\"wi wi-day-" + iconName + "\"></i>"; }
-        else if(dayEveningOrNight() == 1) { return "<i class=\"wi wi-alt-night" + iconName + "\"></i>"; }
-        else { return "<i class=\"wi wi-" + iconName + "\"></i>"; }
+        if (dayEveningOrNight() == -1) return "<i class='wi wi-day-" + iconName + "'></i>";
+        else if(dayEveningOrNight() == 1) return "<i class='wi wi-night-alt-" + iconName + "'></i>";
+        else return "<i class='wi wi-" + iconName + "'></i>";
     }
 
     // GETS THE ICON BASED ON WEATHER ID
     function getRightIcon(id) {
-        if(id >= 200 && id <= 232) { return iconSelector("thunderstorm"); } //CASE THUNDERSTORM
-        else if (id >= 300 && id <= 321) { return iconSelector("sprinkle"); } // CASE DRIZZLE
-        else if (id >= 500 && id <= 504) { return iconSelector("showers"); } // CASE SHOWERS
-        else if (id >= 511 && id <= 531) { return iconSelector("rain"); } // CASE RAIN
-        else if (id >= 600 && id <= 622) { return iconSelector("snow"); } // CASE SNOW
-        else if (id >= 701 && id <= 771) { return iconSelector("fog"); } // CASE FOG/MIST
-        else if (id == 781 || id >= 900 && id <= 901) { return "<i class='wi wi-tornado'></i>"; } // CASE TORNADO
-        else if (id >= 801 && id <= 804) { return iconSelector("cloudy"); } // CASE CLOUDY
-        else if (id >= 951 && id <= 959) { return iconSelector("cloudy-gusts"); } // CASE WINDY
-        else if (id == 962 || id == 902) { return "<i class='wi wi-hurricane'></i>"; } // CASE HURRICANE
+        if(id >= 200 && id <= 232) return iconSelector("thunderstorm"); //CASE THUNDERSTORM
+        else if (id >= 300 && id <= 321) return iconSelector("sprinkle"); // CASE DRIZZLE
+        else if (id >= 500 && id <= 504) { return iconSelector("showers");  } // CASE SHOWERS
+        else if (id >= 511 && id <= 531) return iconSelector("rain"); // CASE RAIN
+        else if (id >= 600 && id <= 622) return iconSelector("snow"); // CASE SNOW
+        else if (id >= 701 && id <= 771) { 
+            if(dayEveningOrNight() == 1) { return "<i class='wi wi-night-fog'></i>"}
+            else return iconSelector("fog"); // CASE FOG/MIST
+        }
+        else if (id == 781 || id >= 900 && id <= 901) return "<i class='wi wi-tornado'></i>"; // CASE TORNADO
+        else if (id >= 801 && id <= 804) return iconSelector("cloudy"); // CASE CLOUDY
+        else if (id >= 951 && id <= 959) return iconSelector("cloudy-gusts"); // CASE WINDY
+        else if (id == 962 || id == 902) return "<i class='wi wi-hurricane'></i>"; // CASE HURRICANE
         else { 
             // CASE NEUTRAL/CASUAL
             if (dayEveningOrNight() == -1) { return "<i class='wi wi-day-sunny'></li>"; }
@@ -91,6 +87,13 @@ $(document).ready(function() {
     // APPENDS THE COUNTRY ABBREVIATION AFTER THE CITY NAME
     function appendCountry(city, countryName) {
         cityName.innerHTML = city + ", " + countryName;
+    }
+
+    // CHANGES THE DESCRIPTION IF NECESSARY
+    function changeDescription(description) {
+        if (description == "haze") { weatherDescription.innerHTML = "It's kinda hazy"; }
+        else if (description.length < 6) { weatherDescription.innerHTML = "It's kinda " + description + "y"; }
+        else { weatherDescription.innerHTML = description.substring(0, 1).toUpperCase() + description.substring(1); }
     }
 
     // GETS THE CURRENT TIME TO DISPLAY DAY OR NIGHT THEME
@@ -270,6 +273,7 @@ $(document).ready(function() {
                 var country = data.sys.country;
                 var description = data.weather[0].description;
                 var weatherID = data.weather[0].id;
+                console.log(weatherID);
                 tempUnit.innerHTML = "F";
                 tempInF.innerHTML = "F";
                 temperature.innerHTML = convertKelvinToF(data.main.temp);
