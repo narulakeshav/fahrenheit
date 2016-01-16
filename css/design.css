@@ -43,11 +43,11 @@ a:hover {
 .form-control,
 .form-control:focus {
     border: none;
-    padding: 25px 15px;
+    padding: 25px 20px;
     border-radius: 0;
     widows: 100%;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #FFF;
     background: rgba(0,0,0,0.1);
     outline: none;
@@ -78,6 +78,11 @@ a:hover {
     margin: 0 auto;
     height: 120px;
     width: auto;
+}
+.intro .wi-day-sunny {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #A570CC;
 }
 
 /* BUTTON PROPERTY CSS */
@@ -197,7 +202,7 @@ a:hover {
     z-index: 100;
     position: absolute;
     top: 0;
-    padding-top: 150px;
+    padding-top: 175px;
 }
 .intro-text {
     color: #333;
