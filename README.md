@@ -5,6 +5,14 @@ You can view the application on my website here: [http://narulakeshav.com/app/fa
 <br><br>
 ![Screenshot](http://i.imgur.com/4P6ZZYr.jpg)
 
+# Functionality
+* Get weather of current location
+* Show description of weather with an accurate icon
+* Get 4-day forecast for current location
+* Search for city and view current weather
+* Search and View 4-day forecast of any city
+* Convert temperature from Fahrenehit to Celcius
+
 # How it Works
 I used [OpenWeatherAPI](http://openweathermap.org/api) in order to fetch the weather of user's current location. The data was in `JSON` format, which I parsed using the `$.getJSON()` method by jQuery. Here's an example:
 ```
