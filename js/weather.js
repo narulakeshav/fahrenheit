@@ -32,10 +32,13 @@ $(document).ready(function() {
     var tempInF = document.getElementById("convert-unit");
     var tempUnit = document.getElementById("temp-type");
 
-    // HIDING THE INTRO DIV IN 4.6 SECONDS
-    var hideDiv = setTimeout(hideIntro, 4600);
     function hideIntro() {
-        $(".intro").addClass("hideDiv");
+        $(".intro").addClass("hide");
+        $(".weather-info").removeClass("hide");
+    }
+
+    function setStatusToWeatherData() {
+        $(".status-text").html("Loading Weather Data");
     }
 
     // CONVERTS THE OPENWEATHER TEMPERATURE FORM KELVIN TO FAHRENHEIT
@@ -185,6 +188,7 @@ $(document).ready(function() {
     function url() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
+                setStatusToWeatherData();
                 // OPENWEATHER API KEY
                 var APIKey = '79bb2d50ad8139554edb48834a59e016';
                 // GET LATITUDE AND LONGITUDE POSITION
@@ -194,6 +198,7 @@ $(document).ready(function() {
                 var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
                 forecast(lon, lat, APIKey);
                 $.getJSON(url, function(data) {
+                    setTimeout(hideIntro,1500);
                     // GETS THE KEY VALUE PAIRS FROM THE JSON
                     var city = data.name;
                     var country = data.sys.country;
