@@ -30,17 +30,17 @@
 </head>
 
 <body>
-    <!-- SHOW FOR 4 SECONDS WHILE DATA LOADS -->
-    <div class="col-md-12 intro wow fadeOutDown" data-wow-delay="3.7s" align="center">
+    <div class="col-md-12 intro wow" align="center">
         <span class="wi wi-day-sunny fa-spin" data-wow-delay="0.1s"></span>
         <p class="intro-text wow fadeIn" data-wow-delay="0.2s">Welcome to Fahrenheit</p>
         <p class="intro-loading wow fadeIn" data-wow-delay="0.6s">
-            <span class="fa fa-spinner fa-spin"></span>&nbsp;&nbsp;Getting Location ...
+            <span class="fa fa-spinner fa-spin"></span>
+            &nbsp;&nbsp;
+            <span class="status-text">Getting Location</span> ...
         </p>
     </div>
 
-    <!-- SHOW AFTER 4 SECOND DELAY -->
-    <div class="col-md-12 wow fadeIn" wow-data-delay="3s">
+    <div class="col-md-12 wow weather-info hide">
         <div class="col-md-4 col-md-offset-4">
             <div class="row search">
                 <!-- INPUT FORM TO SEARCH FOR CITIES -->
