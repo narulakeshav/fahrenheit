@@ -195,7 +195,7 @@ $(document).ready(function() {
                 var lat = position.coords.latitude;
                 var lon = position.coords.longitude;
                 // GENERATE THE URL BASED ON LONGITUDE AND LATITUDE
-                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
+                var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKey;
                 forecast(lon, lat, APIKey);
                 $.getJSON(url, function(data) {
                     setTimeout(hideIntro,1500);
